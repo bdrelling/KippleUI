@@ -1,0 +1,35 @@
+# Updated for v0.39.2
+
+# Disabled Rules
+disabled_rules:
+  - todo # TODOs and FIXMEs should be resolved.
+  - trailing_whitespace # Lines should not have trailing whitespace.
+
+# Enabled Rules
+opt_in_rules:
+  - file_header # Header comments should be consistent with project patterns.
+  - trailing_comma # Trailing commas in arrays and dictionaries should be avoided/enforced.
+
+# Rules run by `swiftlint analyze` (experimental)
+analyzer_rules:
+  - explicit_self # Instance variables and functions should be explicitly accessed with 'self.'.
+  - unused_declaration # Declarations should be referenced at least once within all files linted.
+
+# Rule Configurations
+file_header:
+  required_pattern: \/\/ Copyright © \d{4} Brian Drelling\. All rights reserved\.
+line_length:
+  warning: 150
+  error: 400
+  ignores_comments: true
+  ignores_urls: true
+trailing_comma:
+  mandatory_comma: true
+
+# File and Folder Exclusions
+excluded:
+  - .build
+  - .swiftpm
+  - Package.swift
+  - '*/Package.swift'
+  - '**/*/*+CoreDataProperties.swift'
