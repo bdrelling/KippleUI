@@ -31,7 +31,7 @@ public struct PreviewMatrix: ViewModifier {
 
 public extension View {
     func previewMatrix(_ matrix: PreviewMatrix = .default) -> some View {
-        modifier(matrix)
+        self.modifier(matrix)
     }
 
     func previewMatrix(_ layouts: PreviewMatrix.Layout..., colorSchemes: [ColorScheme]? = nil) -> some View {
