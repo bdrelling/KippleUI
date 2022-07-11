@@ -2,10 +2,10 @@
 
 import SwiftUI
 
-struct ModalPreviewer<Content>: View where Content: View {
-    let content: () -> Content
+public struct ModalPreviewer<Content>: View where Content: View {
+    public let content: () -> Content
 
-    var body: some View {
+    public var body: some View {
         Color.blue
             .edgesIgnoringSafeArea(.all)
             .sheet(isPresented: .constant(true)) {
@@ -13,7 +13,7 @@ struct ModalPreviewer<Content>: View where Content: View {
             }
     }
 
-    init(@ViewBuilder _ content: @escaping (() -> Content)) {
+    public init(@ViewBuilder _ content: @escaping (() -> Content)) {
         self.content = content
     }
 }
@@ -31,8 +31,6 @@ public extension View {
 // MARK: - Previews
 
 struct ModalPreviewer_Previews: PreviewProvider {
-    @State private var isPresenting = false
-
     static var previews: some View {
         Text("This is a modal!")
             .previewInModal()
