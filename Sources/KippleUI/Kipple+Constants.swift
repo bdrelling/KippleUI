@@ -19,13 +19,4 @@ public extension Kipple {
 
     /// A convenience alias for one quarter of the default SwiftUI padding value.
     static let defaultPaddingQuarter = Self.defaultPadding / 4
-
-    /// Whether or not this code is running within Xcode SwiftUI Previews, which has limited functionality.
-    static let isRunningInXcodePreview: Bool = {
-        #if DEBUG
-            ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
-        #else
-            false
-        #endif
-    }()
 }
