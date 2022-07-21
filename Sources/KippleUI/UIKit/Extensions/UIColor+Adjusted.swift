@@ -1,13 +1,13 @@
 // Copyright © 2022 Brian Drelling. All rights reserved.
 
 #if canImport(UIKit)
-    import UIKit
+import UIKit
 
-    public typealias NativeColor = UIColor
+public typealias NativeColor = UIColor
 #elseif canImport(AppKit)
-    import AppKit
+import AppKit
 
-    public typealias NativeColor = NSColor
+public typealias NativeColor = NSColor
 #endif
 
 public extension NativeColor {

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# If there are any files with the .swift extension, run swiftformat on them and add to the commit
-git diff --diff-filter=d --staged --name-only | grep -e '\.swift$' | while read line; do
-  swift package plugin --allow-writing-to-package-directory format "${line}" --quiet
-  git add "$line"
-done
+# Run the format plugin command, telling it to detect and use modified files only.
+# Once the command is complete, modified files are added back to the commit.
+swift package plugin --allow-writing-to-package-directory format --staged-only --quiet

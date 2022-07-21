@@ -10,9 +10,9 @@ public protocol StateEnabledButtonStyle: ButtonStyle {
     var isEnabled: Bool { get }
 
     #if DEBUG
-        /// Whether or not the button has a state override,
-        /// which is useful for SwiftUI previews.
-        var previewState: ButtonState? { get }
+    /// Whether or not the button has a state override,
+    /// which is useful for SwiftUI previews.
+    var previewState: ButtonState? { get }
     #endif
 
     @ViewBuilder
@@ -35,9 +35,9 @@ public extension StateEnabledButtonStyle {
     func state(for configuration: Configuration) -> ButtonState {
         #if DEBUG
 
-            if let previewState = self.previewState {
-                return previewState
-            }
+        if let previewState = self.previewState {
+            return previewState
+        }
 
         #endif
 

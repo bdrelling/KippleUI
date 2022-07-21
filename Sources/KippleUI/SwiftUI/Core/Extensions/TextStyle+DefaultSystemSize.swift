@@ -2,12 +2,12 @@
 
 #if canImport(UIKit)
 
-    import SwiftUI
+import SwiftUI
 
-    public extension Font.TextStyle {
-        var defaultSystemSize: CGFloat {
-            Font.preferredFont(forTextStyle: self).pointSize
-        }
+public extension Font.TextStyle {
+    var defaultSystemSize: CGFloat {
+        Font.preferredFont(forTextStyle: self).pointSize
     }
+}
 
 #endif
