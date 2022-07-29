@@ -19,7 +19,7 @@ let package = Package(
         .package(url: "https://github.com/swift-kipple/Core", .upToNextMinor(from: "0.9.2")),
         .package(url: "https://github.com/Nirma/UIDeviceComplete", .upToNextMajor(from: "2.8.1")),
         // Development
-        .package(url: "https://github.com/swift-kipple/Plugins", from: "0.3.1"),
+        .package(url: "https://github.com/swift-kipple/Tools", from: "0.2.0"),
     ],
     targets: [
         // Product Targets

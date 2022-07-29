@@ -23,21 +23,25 @@ public struct FauxNavigationBarBackground<Content>: View where Content: View {
 
 // MARK: - Extensions
 
-public extension FauxNavigationBarBackground where Content == VisualEffectView {
-    init() {
-        self.init {
-            VisualEffectView(effect: UIBlurEffect(style: .regular))
-        }
+public extension View {
+    func withFauxNaivgationBarBackground<Content>(@ViewBuilder _ content: @escaping () -> Content) -> some View where Content: View {
+        self.overlay(FauxNavigationBarBackground(content))
     }
 }
+
+#if canImport(UIKit)
 
 public extension View {
     func withFauxNaivgationBarBackground() -> some View {
         self.overlay(FauxNavigationBarBackground())
     }
+}
 
-    func withFauxNaivgationBarBackground<Content>(@ViewBuilder _ content: @escaping () -> Content) -> some View where Content: View {
-        self.overlay(FauxNavigationBarBackground(content))
+public extension FauxNavigationBarBackground where Content == VisualEffectView {
+    init() {
+        self.init {
+            VisualEffectView(effect: UIBlurEffect(style: .regular))
+        }
     }
 }
 
@@ -66,3 +70,5 @@ struct FauxNavigationBarBackground_Previews: PreviewProvider {
         .previewMatrix(.currentDevice)
     }
 }
+
+#endif
