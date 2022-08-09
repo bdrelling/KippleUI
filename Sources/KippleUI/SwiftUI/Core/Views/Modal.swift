@@ -3,8 +3,6 @@
 import SwiftUI
 
 public struct Modal<Content>: View where Content: View {
-    @Environment(\.dismiss) private var dismiss
-
     private let content: () -> Content
 
     public var body: some View {
@@ -12,13 +10,7 @@ public struct Modal<Content>: View where Content: View {
             self.content()
                 .withFauxNaivgationBarBackground()
                 .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: { self.dismiss() }) {
-                            Text("Done")
-                        }
-                    }
-                }
+                .withNavigationBarDoneButton()
         }
     }
 

@@ -31,7 +31,6 @@ public struct KipplePicker<Content, Value>: View where Content: View, Value: Equ
             }
         }
         .edgesIgnoringSafeArea(.bottom)
-        .withFauxNaivgationBarBackground()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
@@ -95,51 +94,6 @@ struct KipplePickerItem<Content, Value>: View where Content: View, Value: Equata
         self.value = value
         self._selection = selection
         self.content = content
-    }
-}
-
-// MARK: - Supporting Types
-
-private struct RefreshingView<Content>: View where Content: View {
-    @Environment(\.refresh) private var refresh
-
-    @ViewBuilder var content: (RefreshAction?) -> Content
-
-    var body: some View {
-        self.content(self.refresh)
-    }
-}
-
-// MARK: - Extensions
-
-public extension View {
-    /// Enables the `KipplePicker` to refresh when loaded if options are unavailable.
-    func refreshOnAppear(if condition: Bool) -> some View {
-        RefreshingView { refresh in
-            self.task {
-                if condition {
-                    await refresh?()
-                }
-            }
-        }
-    }
-
-    /// Adds a refresh button to the toolbar.
-    func withToolbarRefreshButton() -> some View {
-        RefreshingView { refresh in
-            self.toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(
-                        role: nil,
-                        action: {
-                            Task { await refresh?() }
-                        }
-                    ) {
-                        Text("??")
-                    }
-                }
-            }
-        }
     }
 }
 
