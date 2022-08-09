@@ -3,15 +3,15 @@
 import SwiftUI
 
 public protocol KipplePickerStyle {
-    var itemVerticalSpacing: CGFloat { get }
-    var itemHorizontalSpacing: CGFloat { get }
+    var verticalSpacing: CGFloat { get }
+    var horizontalSpacing: CGFloat { get }
 }
 
 // MARK: - Supporting Types
 
 public struct DefaultKipplePickerStyle: KipplePickerStyle {
-    public let itemVerticalSpacing: CGFloat = 0
-    public let itemHorizontalSpacing: CGFloat = 0
+    public let verticalSpacing: CGFloat = 0
+    public let horizontalSpacing: CGFloat = 0
 }
 
 extension KipplePickerStyle where Self == DefaultKipplePickerStyle {

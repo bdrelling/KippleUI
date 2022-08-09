@@ -3,8 +3,6 @@
 import SwiftUI
 
 public struct KipplePicker<Content, Value>: View where Content: View, Value: Equatable, Value: Identifiable {
-    @Environment(\.refresh) private var refresh
-    @Environment(\.dismiss) private var dismiss
     @Environment(\.kipplePickerStyle) private var style
 
     @Binding public var selection: Value?
@@ -15,7 +13,7 @@ public struct KipplePicker<Content, Value>: View where Content: View, Value: Equ
     public var body: some View {
         ScrollViewReader { reader in
             ScrollView(showsIndicators: false) {
-                VStack(spacing: self.style.itemVerticalSpacing) {
+                VStack(spacing: self.style.verticalSpacing) {
                     ForEach(self.options) { option in
                         KipplePickerItem(option, selection: self.$selection) {
                             self.content(option)
@@ -23,7 +21,7 @@ public struct KipplePicker<Content, Value>: View where Content: View, Value: Equ
                     }
                 }
                 .frame(maxWidth: .infinity)
-                .padding(.horizontal, self.style.itemHorizontalSpacing / 2)
+                .padding(.horizontal, self.style.horizontalSpacing / 2)
                 .padding(.top)
             }
             .onAppear {
@@ -35,23 +33,6 @@ public struct KipplePicker<Content, Value>: View where Content: View, Value: Equ
         .edgesIgnoringSafeArea(.bottom)
         .withFauxNaivgationBarBackground()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(
-                    role: nil,
-                    action: {
-                        Task { await self.refresh?() }
-                    }
-                ) {
-                    Text("??")
-                }
-            }
-        }
-        .task {
-            if self.options.isEmpty {
-                await self.refresh?()
-            }
-        }
     }
 
     public init(
@@ -103,7 +84,7 @@ struct KipplePickerItem<Content, Value>: View where Content: View, Value: Equata
         Button(action: { self.selection = self.value }) {
             self.content()
         }
-        .selected(self.isSelected)
+        .highlighted(self.isSelected)
     }
 
     init(
@@ -114,6 +95,51 @@ struct KipplePickerItem<Content, Value>: View where Content: View, Value: Equata
         self.value = value
         self._selection = selection
         self.content = content
+    }
+}
+
+// MARK: - Supporting Types
+
+private struct RefreshingView<Content>: View where Content: View {
+    @Environment(\.refresh) private var refresh
+
+    @ViewBuilder var content: (RefreshAction?) -> Content
+
+    var body: some View {
+        self.content(self.refresh)
+    }
+}
+
+// MARK: - Extensions
+
+public extension View {
+    /// Enables the `KipplePicker` to refresh when loaded if options are unavailable.
+    func refreshOnAppear(if condition: Bool) -> some View {
+        RefreshingView { refresh in
+            self.task {
+                if condition {
+                    await refresh?()
+                }
+            }
+        }
+    }
+
+    /// Adds a refresh button to the toolbar.
+    func withToolbarRefreshButton() -> some View {
+        RefreshingView { refresh in
+            self.toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(
+                        role: nil,
+                        action: {
+                            Task { await refresh?() }
+                        }
+                    ) {
+                        Text("??")
+                    }
+                }
+            }
+        }
     }
 }
 
