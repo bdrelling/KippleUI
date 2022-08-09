@@ -14,6 +14,14 @@ public struct PreviewMatrix: ViewModifier {
 
     public func body(content: Content) -> some View {
         ForEach(self.layouts, id: \.id) { layout in
+            // In Xcode 14+, you can see various color schemes for a given view in the canvas.
+            #if swift(>=5.7)
+            content
+                // Set up the preview configuration
+                .previewLayout(layout.previewLayout)
+                .previewDevice(layout.previewDevice)
+                .previewDisplayName(layout.name)
+            #else
             ForEach(colorSchemes, id: \.self) { colorScheme in
                 content
                     // Set up the preview configuration
@@ -23,6 +31,7 @@ public struct PreviewMatrix: ViewModifier {
                     // Apply color schemes to the modified preview
                     .preferredColorScheme(colorScheme)
             }
+            #endif
         }
     }
 }

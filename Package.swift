@@ -14,6 +14,8 @@ let package = Package(
         .library(name: "KippleDevice", targets: ["KippleDevice"]),
         .library(name: "KippleUI", targets: ["KippleUI", "SafeNavigationKit"]),
         .library(name: "SafeNavigationKit", targets: ["SafeNavigationKit"]),
+        // We only export SwiftUIPreviews so it is include in the package for compilation.
+        .library(name: "SwiftUIPreviews", targets: ["SwiftUIPreviews"]),
     ],
     dependencies: [
         .package(url: "https://github.com/swift-kipple/Core", .upToNextMinor(from: "0.9.2")),
@@ -39,6 +41,12 @@ let package = Package(
         .target(
             name: "SafeNavigationKit",
             dependencies: []
+        ),
+        .target(
+            name: "SwiftUIPreviews",
+            dependencies: [
+                .target(name: "KippleUI"),
+            ]
         ),
     ]
 )
