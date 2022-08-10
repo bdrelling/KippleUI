@@ -6,35 +6,35 @@ import SwiftUI
 /// For more references, see:
 /// - https://developer.apple.com/documentation/swiftui/font
 /// - https://developer.apple.com/design/human-interface-guidelines/foundations/typography/
-public struct FontIterator<Content>: View where Content: View {
-    private let fonts: [Font]
-    private let content: (Font) -> Content
+public struct SystemFontIterator<Content>: View where Content: View {
+    private let textStyles: [Font.TextStyle]
+    private let content: (Font, Font.TextStyle) -> Content
 
     public var body: some View {
-        ForEach(self.fonts) { font in
-            self.content(font)
+        ForEach(self.textStyles, id: \.self) { textStyle in
+            self.content(.system(textStyle), textStyle)
         }
     }
 
     init(
-        fonts: [Font] = Font.allCases,
-        @ViewBuilder _ content: @escaping (Font) -> Content
+        textStyles: [Font.TextStyle] = Font.TextStyle.allCases,
+        @ViewBuilder _ content: @escaping (Font, Font.TextStyle) -> Content
     ) {
-        self.fonts = fonts
+        self.textStyles = textStyles
         self.content = content
     }
 }
 
 // MARK: - Previews
 
-struct FontIterator_Previews: PreviewProvider {
+struct SystemFontIterator_Previews: PreviewProvider {
     private static let pangram = "How vexingly quick daft zebras jump!"
 
     static var previews: some View {
         VStack(alignment: .leading, spacing: 8) {
-            FontIterator { font in
+            SystemFontIterator { font, textStyle in
                 VStack(alignment: .leading) {
-                    Text(font.name)
+                    Text(String(describing: textStyle))
                         .font(.caption)
                         .foregroundColor(.secondary)
 
