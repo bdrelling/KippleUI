@@ -11,27 +11,38 @@ public struct KipplePicker<Content, Value>: View where Content: View, Value: Equ
     private let content: (Value) -> Content
 
     public var body: some View {
-        ScrollViewReader { reader in
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: self.style.verticalSpacing) {
-                    ForEach(self.options) { option in
-                        KipplePickerItem(option, selection: self.$selection) {
-                            self.content(option)
+        Group {
+            if self.options.isEmpty {
+                self.emptyLabel
+            } else {
+                ScrollViewReader { reader in
+                    ScrollView(showsIndicators: false) {
+                        VStack(spacing: self.style.verticalSpacing) {
+                            ForEach(self.options) { option in
+                                KipplePickerItem(option, selection: self.$selection) {
+                                    self.content(option)
+                                }
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.horizontal, self.style.horizontalSpacing / 2)
+                        .padding(.top)
+                    }
+                    .onAppear {
+                        if let selectionID = self.selection?.id {
+                            reader.scrollTo(selectionID)
                         }
                     }
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.horizontal, self.style.horizontalSpacing / 2)
-                .padding(.top)
-            }
-            .onAppear {
-                if let selectionID = self.selection?.id {
-                    reader.scrollTo(selectionID)
                 }
             }
         }
         .edgesIgnoringSafeArea(.bottom)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    private var emptyLabel: some View {
+        Text("No options available")
+            .opacity(0.35)
     }
 
     public init(
