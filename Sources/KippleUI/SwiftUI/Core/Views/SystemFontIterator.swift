@@ -11,13 +11,13 @@ public struct SystemFontIterator<Content>: View where Content: View {
     private let content: (Font, Font.TextStyle) -> Content
 
     public var body: some View {
-        ForEach(self.textStyles, id: \.self) { textStyle in
+        TextStyleIterator(self.textStyles) { textStyle in
             self.content(.system(textStyle), textStyle)
         }
     }
 
-    init(
-        textStyles: [Font.TextStyle] = Font.TextStyle.allCases,
+    public init(
+        _ textStyles: [Font.TextStyle] = Font.TextStyle.allCases,
         @ViewBuilder _ content: @escaping (Font, Font.TextStyle) -> Content
     ) {
         self.textStyles = textStyles
