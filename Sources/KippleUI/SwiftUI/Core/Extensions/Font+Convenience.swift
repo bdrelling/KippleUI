@@ -22,8 +22,8 @@ public extension Font {
         UIFont.preferredFont(forTextStyle: textStyle.uiTextStyle)
     }
 
-    static func custom(_ name: String, relativeTo textStyle: Font.TextStyle) -> Font {
-        self.custom(name, size: textStyle.preferredSize, relativeTo: textStyle)
+    static func custom(_ name: String, relativeTo textStyle: Font.TextStyle, multiplier: CGFloat = 1) -> Font {
+        self.custom(name, size: textStyle.preferredSize * multiplier, relativeTo: textStyle)
     }
 }
 
