@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-public struct DismissingView<Content>: View where Content: View {
+public struct DismissReader<Content>: View where Content: View {
     @Environment(\.dismiss) private var dismiss
 
     @ViewBuilder var content: (DismissAction) -> Content
@@ -11,7 +11,7 @@ public struct DismissingView<Content>: View where Content: View {
         self.content(self.dismiss)
     }
 
-    init(@ViewBuilder _ content: @escaping (DismissAction) -> Content) {
+    public init(@ViewBuilder _ content: @escaping (DismissAction) -> Content) {
         self.content = content
     }
 }
@@ -21,7 +21,7 @@ public struct DismissingView<Content>: View where Content: View {
 public extension View {
     /// Adds a dismiss button to the toolbar.
     func withNavigationBarDoneButton(if condition: Bool = true) -> some View {
-        DismissingView { dismiss in
+        DismissReader { dismiss in
             self.toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: { dismiss() }) {
