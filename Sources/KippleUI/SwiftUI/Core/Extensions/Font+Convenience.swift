@@ -5,7 +5,20 @@
 import SwiftUI
 
 public extension Font {
-    static func preferredFont(forTextStyle textStyle: Font.TextStyle) -> UIFont {
+    static var allFonts: [Font] {
+        UIFont.familyNames
+            .sorted()
+            .compactMap { Font.custom($0, relativeTo: .body) }
+    }
+
+    static var allFontsAndVariations: [Font] {
+        UIFont.familyNames
+            .sorted()
+            .flatMap(UIFont.fontNames)
+            .compactMap { Font.custom($0, relativeTo: .body) }
+    }
+
+    static func preferredUIFont(forTextStyle textStyle: Font.TextStyle) -> UIFont {
         UIFont.preferredFont(forTextStyle: textStyle.uiTextStyle)
     }
 

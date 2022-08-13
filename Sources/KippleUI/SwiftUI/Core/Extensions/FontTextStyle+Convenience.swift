@@ -35,7 +35,7 @@ public extension Font.TextStyle {
     }
 
     var preferredSize: CGFloat {
-        UIFont.preferredFont(forTextStyle: self.uiTextStyle).pointSize
+        self.uiTextStyle.preferredSize
     }
 }
 

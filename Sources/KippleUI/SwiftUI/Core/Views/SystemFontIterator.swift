@@ -41,6 +41,7 @@ struct SystemFontIterator_Previews: PreviewProvider {
                     Text(self.pangram)
                         .font(font)
                 }
+                .fixedSize(horizontal: false, vertical: true)
             }
         }
         .padding()
