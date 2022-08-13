@@ -28,7 +28,7 @@ struct FontIterator_Previews: PreviewProvider {
 
     static var previews: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
+            LazyVStack(alignment: .leading, spacing: 16) {
                 FontIterator { font in
                     VStack(alignment: .leading, spacing: 4) {
                         Text(font.familyName)
