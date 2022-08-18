@@ -1,5 +1,7 @@
 // Copyright © 2022 Brian Drelling. All rights reserved.
 
+#if canImport(UIKit)
+
 import SwiftUI
 
 public extension View {
@@ -25,3 +27,5 @@ struct EmbedInNavigationViewModifier: ViewModifier {
         .navigationViewStyle(.stack)
     }
 }
+
+#endif

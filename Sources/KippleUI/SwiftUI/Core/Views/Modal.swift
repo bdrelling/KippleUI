@@ -1,5 +1,7 @@
 // Copyright © 2022 Brian Drelling. All rights reserved.
 
+#if canImport(UIKit)
+
 import SwiftUI
 
 public struct Modal<Content>: View where Content: View {
@@ -32,3 +34,5 @@ public extension View {
         }
     }
 }
+
+#endif

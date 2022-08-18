@@ -1,5 +1,7 @@
 // Copyright © 2022 Brian Drelling. All rights reserved.
 
+#if canImport(UIKit)
+
 import SwiftUI
 
 /// An indirect enum can refer to/reference itself without causing an infinite loop.
@@ -103,3 +105,5 @@ private extension NavigationNode {
         }
     }
 }
+
+#endif

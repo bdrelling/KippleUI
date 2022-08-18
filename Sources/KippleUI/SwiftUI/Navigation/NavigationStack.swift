@@ -1,5 +1,7 @@
 // Copyright © 2022 Brian Drelling. All rights reserved.
 
+#if canImport(UIKit)
+
 import SwiftUI
 
 /// A full view hierarchy representing an array of `NavigationRoute` instances, where each instance
@@ -47,3 +49,5 @@ public struct NavigationStack<Screen: Equatable, ScreenView: View>: View {
         self.screenViewBuilder = screenViewBuilder
     }
 }
+
+#endif

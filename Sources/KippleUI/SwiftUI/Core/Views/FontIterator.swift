@@ -1,5 +1,7 @@
 // Copyright © 2022 Brian Drelling. All rights reserved.
 
+#if canImport(UIKit)
+
 import SwiftUI
 
 public struct FontIterator<Content>: View where Content: View {
@@ -47,3 +49,5 @@ struct FontIterator_Previews: PreviewProvider {
         .previewMatrix(.sizeThatFits)
     }
 }
+
+#endif
