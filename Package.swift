@@ -5,10 +5,10 @@ import PackageDescription
 let package = Package(
     name: "KippleUI",
     platforms: [
-        .iOS(.v15),
-        .macOS(.v12),
-        .tvOS(.v15),
-        .watchOS(.v8),
+        .iOS(.v13),
+        .macOS(.v10_15),
+        .tvOS(.v13),
+        .watchOS(.v6),
     ],
     products: [
         .library(name: "KippleDevice", targets: ["KippleDevice"]),
@@ -18,8 +18,6 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/swift-kipple/Core", .upToNextMinor(from: "0.9.2")),
         .package(url: "https://github.com/Nirma/UIDeviceComplete", .upToNextMajor(from: "2.8.1")),
-        // Development
-        .package(url: "https://github.com/swift-kipple/Tools", from: "0.2.1"),
     ],
     targets: [
         // Product Targets
@@ -42,3 +40,10 @@ let package = Package(
         ),
     ]
 )
+
+#if swift(>=5.5)
+// Add Kipple Tools if possible.
+package.dependencies.append(
+    .package(url: "https://github.com/swift-kipple/Tools", from: "0.2.5")
+)
+#endif

@@ -46,6 +46,7 @@ public extension View {
         self.previewMatrix(.init(layouts: .device(type)))
     }
 
+    @available(iOS 13.0, macOS 11.0, tvOS 13.0, watchOS 6.0, *)
     func previewMatrix(colorSchemes: [ColorScheme]) -> some View {
         ForEach(colorSchemes, id: \.self) { colorScheme in
             self.preferredColorScheme(colorScheme)

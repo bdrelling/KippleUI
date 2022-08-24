@@ -4,10 +4,12 @@ import SwiftUI
 
 #if os(macOS)
 
+@available(macOS 11.0, *)
 public typealias SafeNavigationView = MacOSNavigationView
 
 // TODO: @Environment and @EnvironmentObject is not yet supported.
 //       Workaround: Move Environment explicitly to the Destination, instead of the Button.
+@available(macOS 11.0, *)
 public struct MacOSNavigationView<Content>: View where Content: View {
     @StateObject private var navigator: Navigator
 

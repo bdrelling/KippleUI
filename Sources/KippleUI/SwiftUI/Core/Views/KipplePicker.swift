@@ -2,6 +2,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *)
 public struct KipplePicker<Content, Value>: View where Content: View, Value: Equatable, Value: Identifiable {
     @Environment(\.kipplePickerStyle) private var style
 
@@ -110,6 +111,7 @@ struct KipplePickerItem<Content, Value>: View where Content: View, Value: Equata
 
 // MARK: - Previews
 
+@available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *)
 struct PickerView_Previews: PreviewProvider {
     enum PickerOption: String, CaseIterable, Identifiable {
         case oof

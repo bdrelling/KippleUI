@@ -2,6 +2,7 @@
 
 import SwiftUI
 
+@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
 public struct RefreshingView<Content>: View where Content: View {
     @Environment(\.refresh) private var refresh
 
@@ -18,6 +19,7 @@ public struct RefreshingView<Content>: View where Content: View {
 
 // MARK: - Extensions
 
+@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
 public extension View {
     /// Enables the `KipplePicker` to refresh when loaded if options are unavailable.
     func refreshOnAppear(if condition: Bool) -> some View {

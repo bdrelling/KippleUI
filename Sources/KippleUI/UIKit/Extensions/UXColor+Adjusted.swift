@@ -1,16 +1,20 @@
 // Copyright © 2022 Brian Drelling. All rights reserved.
 
 #if canImport(UIKit)
+
 import UIKit
 
-public typealias NativeColor = UIColor
+public typealias UXColor = UIColor
+
 #elseif canImport(AppKit)
+
 import AppKit
 
-public typealias NativeColor = NSColor
+public typealias UXColor = NSColor
+
 #endif
 
-public extension NativeColor {
+public extension UXColor {
     func lighter(byPercentage percentage: CGFloat) -> Self {
         self.adjusted(byPercentage: abs(percentage))
     }

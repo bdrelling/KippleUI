@@ -63,8 +63,7 @@ struct FauxNavigationBarBackground_Previews: PreviewProvider {
 
                     Text("View")
                 }
-                .navigationTitle("Title")
-                .navigationBarTitleDisplayMode(displayMode)
+                .navigationBarTitle("Title", displayMode: displayMode)
             }
         }
         .previewMatrix(.currentDevice)
