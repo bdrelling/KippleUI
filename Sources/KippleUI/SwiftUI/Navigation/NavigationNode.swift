@@ -44,7 +44,7 @@ indirect enum NavigationNode<Screen: Equatable, ScreenView: View>: View {
             EmptyView()
         }
     }
-    
+
     var navigationLink: some View {
         #if os(iOS)
         NavigationLink(isActive: isPushNavigationActive, destination: { nextNode }, label: EmptyView.init)
