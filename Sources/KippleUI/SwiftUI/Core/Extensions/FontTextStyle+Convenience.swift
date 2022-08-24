@@ -8,7 +8,12 @@ public extension Font.TextStyle {
     var uiTextStyle: UIFont.TextStyle {
         switch self {
         case .largeTitle:
+            #if os(tvOS)
+            // There is no .largeTitle on tvOS, so we leverage .title1 instead.
+            return .title1
+            #else
             return .largeTitle
+            #endif
         case .title:
             return .title1
         case .title2:

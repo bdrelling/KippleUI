@@ -11,6 +11,7 @@ import SwiftUI
 /// pushed/presented).
 ///
 /// - Note: Heavily influenced by [this excellent blog post](https://johnpatrickmorgan.github.io/2021/07/03/NStack/).
+@available(watchOS 7.0, *)
 indirect enum NavigationNode<Screen: Equatable, ScreenView: View>: View {
     /// Only used to indicate the start of the navigation stack.
     /// - Note: an `end` node should never manually be added to the stack!
@@ -36,21 +37,29 @@ indirect enum NavigationNode<Screen: Equatable, ScreenView: View>: View {
     var body: some View {
         if case let .route(route, _, _, _, viewRouter) = self {
             viewRouter(route.screen)
-                .background(
-                    NavigationLink(isActive: isPushNavigationActive, destination: { nextNode }, label: EmptyView.init)
-                        .isDetailLink(false)
-                        .hidden()
-                )
+                .background(self.navigationLink)
                 .sheet(isPresented: isSheetPresented, onDismiss: onDismiss, content: { nextNode })
                 .inNavigationView(inNavigation)
         } else {
             EmptyView()
         }
     }
+    
+    var navigationLink: some View {
+        #if os(iOS)
+        NavigationLink(isActive: isPushNavigationActive, destination: { nextNode }, label: EmptyView.init)
+            .isDetailLink(false)
+            .hidden()
+        #else
+        NavigationLink(isActive: isPushNavigationActive, destination: { nextNode }, label: EmptyView.init)
+            .hidden()
+        #endif
+    }
 }
 
 // MARK: Private helpers
 
+@available(watchOS 7.0, *)
 private extension NavigationNode {
     var route: NavigationRoute<Screen>? {
         guard case let .route(route, _, _, _, _) = self else {

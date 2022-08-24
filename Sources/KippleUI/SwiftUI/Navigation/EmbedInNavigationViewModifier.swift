@@ -4,6 +4,7 @@
 
 import SwiftUI
 
+@available(watchOS 7.0, *)
 public extension View {
     func inNavigationView() -> some View {
         modifier(EmbedInNavigationViewModifier())
@@ -19,6 +20,7 @@ public extension View {
     }
 }
 
+@available(watchOS 7.0, *)
 struct EmbedInNavigationViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         NavigationView {

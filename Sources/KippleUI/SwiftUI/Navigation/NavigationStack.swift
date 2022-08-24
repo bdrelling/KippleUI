@@ -9,6 +9,7 @@ import SwiftUI
 /// link (push) or sheet.
 ///
 /// - Note: Heavily influenced by [this excellent blog post](https://johnpatrickmorgan.github.io/2021/07/03/NStack/).
+@available(watchOS 7.0, *)
 public struct NavigationStack<Screen: Equatable, ScreenView: View>: View {
     /// The routes representing the current state of the view hierarchy managed by this `NavigationState`, from
     /// the root view (`navigationRoutes.first`) to the currently visible view (`navigationRoutes.last`).

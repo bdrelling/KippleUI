@@ -1,6 +1,6 @@
 // Copyright © 2022 Brian Drelling. All rights reserved.
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 
 import SwiftUI
 

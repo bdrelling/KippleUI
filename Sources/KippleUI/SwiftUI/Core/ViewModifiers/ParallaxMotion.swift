@@ -1,5 +1,7 @@
 // Copyright © 2022 Brian Drelling. All rights reserved.
 
+#if canImport(CoreMotion)
+
 import CoreMotion
 import SwiftUI
 
@@ -89,3 +91,5 @@ public class MotionManager: ObservableObject {
 private func deg2rad(_ number: Double) -> Double {
     number * .pi / 180
 }
+
+#endif

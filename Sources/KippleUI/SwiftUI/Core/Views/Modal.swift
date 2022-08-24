@@ -1,20 +1,27 @@
 // Copyright © 2022 Brian Drelling. All rights reserved.
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 
 import SwiftUI
 
-@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
+@available(iOS 15.0, macOS 12.0, tvOS 15.0, *)
 public struct Modal<Content>: View where Content: View {
     private let content: () -> Content
 
     public var body: some View {
+        #if os(tvOS)
+        NavigationView {
+            self.content()
+                .withNavigationBarDoneButton()
+        }
+        #else
         NavigationView {
             self.content()
                 .withFauxNaivgationBarBackground()
                 .navigationBarTitleDisplayMode(.inline)
                 .withNavigationBarDoneButton()
         }
+        #endif
     }
 
     public init(_ content: Content) {
@@ -28,7 +35,7 @@ public struct Modal<Content>: View where Content: View {
 
 // MARK: - Extensions
 
-@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
+@available(iOS 15.0, macOS 12.0, tvOS 15.0, *)
 public extension View {
     func inModal() -> some View {
         Modal {

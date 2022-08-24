@@ -50,7 +50,7 @@ public struct MacOSNavigationView<Content>: View where Content: View {
     }
 }
 
-#else
+#elseif os(iOS) || os(tvOS)
 
 public typealias SafeNavigationView = NavigationView
 

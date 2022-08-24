@@ -1,5 +1,7 @@
 // Copyright © 2022 Brian Drelling. All rights reserved.
 
+#if os(iOS)
+
 import SwiftUI
 
 public struct FauxNavigationBarBackground<Content>: View where Content: View {
@@ -28,8 +30,6 @@ public extension View {
         self.overlay(FauxNavigationBarBackground(content))
     }
 }
-
-#if canImport(UIKit)
 
 public extension View {
     func withFauxNaivgationBarBackground() -> some View {
