@@ -1,6 +1,4 @@
 #!/bin/bash
 
-mkdir -p $DEPLOY_DIRECTORY
-
-swift test -c debug --enable-code-coverage
-cp $(swift test --show-codecov-path) "${DEPLOY_DIRECTORY}/codecov.json"
+# For now, the project has no tests, so just build.
+swift build -c debug --enable-test-discovery
