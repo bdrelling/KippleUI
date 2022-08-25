@@ -63,10 +63,6 @@ jobs:
         # Each version of Xcodes comes with a bundled version of Swift.
         # https://swiftversion.net
         compiler: [
-            { runner: macos-11, xcode_version: 12.4, swift_version: 5.3.2 },
-            { runner: macos-11, xcode_version: 12.5.1, swift_version: 5.4.2 },
-            # Xcode 13.2 doesn't require macOS 12, but we'll use the latest anyway.
-            { runner: macos-12, xcode_version: 13.2, swift_version: 5.5.2 },
             # Xcode 13.4+ requires macOS 12+
             { runner: macos-12, xcode_version: 13.4, swift_version: 5.6.1 },
           ]
