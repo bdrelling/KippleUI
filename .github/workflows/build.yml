@@ -1,0 +1,15 @@
+name: Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  swift_test:
+    uses: bdrelling/workflows/.github/workflows/swift_test_apple_package_5_6.yml@main
+    with:
+      scheme: KippleUI-Package
+      subcommand: build
