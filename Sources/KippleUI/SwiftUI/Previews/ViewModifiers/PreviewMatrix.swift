@@ -28,26 +28,31 @@ public extension View {
         self.modifier(matrix)
     }
 
-    @ViewBuilder
-    func previewMatrix(_ layouts: [PreviewMatrix.Layout], colorSchemes: [ColorScheme]? = nil) -> some View {
-        if let colorSchemes = colorSchemes {
-            self.previewMatrix(.init(layouts: layouts))
-                .previewMatrix(colorSchemes: colorSchemes)
-        } else {
-            self.previewMatrix(.init(layouts: layouts))
-        }
-    }
-
-    func previewMatrix(_ layouts: PreviewMatrix.Layout..., colorSchemes: [ColorScheme]? = nil) -> some View {
-        self.previewMatrix(layouts, colorSchemes: colorSchemes)
-    }
-
-    func previewMatrix(_ type: PreviewDeviceType) -> some View {
+    func previewDevice(_ type: PreviewDeviceType) -> some View {
         self.previewMatrix(.init(layouts: .device(type)))
     }
 
-    @available(iOS 13.0, macOS 11.0, tvOS 13.0, watchOS 6.0, *)
-    func previewMatrix(colorSchemes: [ColorScheme]) -> some View {
+    func previewLayouts(_ layouts: [PreviewMatrix.Layout]) -> some View {
+        self.previewMatrix(.init(layouts: layouts))
+    }
+
+    func previewLayouts(_ layouts: PreviewMatrix.Layout...) -> some View {
+        self.previewLayouts(layouts)
+    }
+
+    @available(macOS 11.0, *)
+    func previewLayouts(_ layouts: [PreviewMatrix.Layout], colorSchemes: [ColorScheme]) -> some View {
+        self.previewLayouts(layouts)
+            .previewColorSchemes(colorSchemes)
+    }
+
+    @available(macOS 11.0, *)
+    func previewLayouts(_ layouts: PreviewMatrix.Layout..., colorSchemes: [ColorScheme]) -> some View {
+        self.previewLayouts(layouts, colorSchemes: colorSchemes)
+    }
+
+    @available(macOS 11.0, *)
+    func previewColorSchemes(_ colorSchemes: [ColorScheme]) -> some View {
         ForEach(colorSchemes, id: \.self) { colorScheme in
             self.preferredColorScheme(colorScheme)
         }
@@ -59,7 +64,7 @@ public extension View {
 struct PreviewMatrix_Previews: PreviewProvider {
     static var previews: some View {
         Text("Testing!")
-            .previewMatrix(
+            .previewLayouts(
                 .currentDevice,
                 .device(.iPodTouchGen7),
                 .fixedSize(width: 200, height: 80),
