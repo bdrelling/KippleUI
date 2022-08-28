@@ -9,9 +9,11 @@ on:
 
 jobs:
   swift_test:
-    uses: bdrelling/ci/.github/workflows/swift_test_apple_package_5_6.yml@main
+    uses: bdrelling/ci/.github/workflows/swift_test.yml@main
+    secrets:
+      DISCORD_CI_WEBHOOK: ${{ secrets.DISCORD_CI_WEBHOOK }}
     with:
       scheme: KippleUI-Package
       subcommand: build
-    secrets:
-      DISCORD_CI_WEBHOOK: ${{ secrets.DISCORD_CI_WEBHOOK }}
+      platforms: iOS tvOS macOS watchOS
+      swift-versions: 5.6
