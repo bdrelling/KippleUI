@@ -6,10 +6,13 @@ import SwiftUI
 @available(macOS, unavailable)
 public struct NavigationHidden: ViewModifier {
     public func body(content: Content) -> some View {
-        content
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)
+        // FIXME: It's absurd that this is required, but the unavailable attribute is not being respected.
+        if #available(macOS 13.0, *) {
+            content
+                .navigationBarTitle("")
+                .navigationBarHidden(true)
+                .navigationBarBackButtonHidden(true)
+        }
     }
 }
 

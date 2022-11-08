@@ -16,7 +16,7 @@ let package = Package(
         .library(name: "SafeNavigationKit", targets: ["SafeNavigationKit"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-kipple/Core", .upToNextMinor(from: "0.10.0")),
+        .package(url: "https://github.com/swift-kipple/Core", .upToNextMinor(from: "0.11.0")),
         .package(url: "https://github.com/Nirma/UIDeviceComplete", .upToNextMajor(from: "2.8.1")),
     ],
     targets: [

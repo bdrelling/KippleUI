@@ -1,5 +1,6 @@
 // Copyright © 2022 Brian Drelling. All rights reserved.
 
+import Foundation
 import KippleCore
 
 protocol DeviceHelping {
@@ -32,8 +33,8 @@ public final class DeviceHelper: DeviceHelping {
 
     public static var deviceInfo: DeviceInfo {
         .init(
-            appVersion: BundleHelper.appVersion,
-            appBuildNumber: BundleHelper.appBuildNumber,
+            appVersion: Bundle.main.bundleVersion,
+            appBuildNumber: Bundle.main.bundleBuildNumber,
             deviceFamily: self.deviceFamily,
             deviceModel: self.deviceModel,
             systemName: self.systemName,
@@ -100,8 +101,8 @@ public final class DeviceHelper: DeviceHelping {
 
     public static var deviceInfo: DeviceInfo {
         .init(
-            appVersion: BundleHelper.appVersion,
-            appBuildNumber: BundleHelper.appBuildNumber,
+            appVersion: Bundle.main.bundleVersion,
+            appBuildNumber: Bundle.main.bundleBuildNumber,
             deviceFamily: self.deviceFamily,
             deviceModel: self.deviceModel,
             systemName: self.systemName,
