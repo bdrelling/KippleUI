@@ -49,7 +49,13 @@ public enum PreviewDeviceType: String {
     case iPhone13Pro = "iPhone 13 Pro"
     case iPhone13ProMax = "iPhone 13 Pro Max"
     // Temporarily disabled as it's not working in Xcode 13.4.1 by default.
-//    case iPhoneSEGen3 = "iPhone SE (3rd generation)"
+    case iPhoneSEGen3 = "iPhone SE (3rd generation)"
+
+    // iOS 16 (2022)
+    case iPhone14 = "iPhone 14"
+    case iPhone14Plus = "iPhone 14 Plus"
+    case iPhone14Pro = "iPhone 14 Pro"
+    case iPhone14ProMax = "iPhone 14 Pro Max"
 
     // MARK: iPads
 
@@ -90,6 +96,11 @@ public enum PreviewDeviceType: String {
     case iPadGen9 = "iPad (9th generation)"
     case iPadAirGen5 = "iPad Air (5th generation)"
     case iPadMiniGen6 = "iPad mini (6th generation)"
+
+    // iPadOS 16 (2022)
+    case iPadGen10 = "iPad (10th generation)"
+    case iPadPro11InchGen4 = "iPad Pro (11-inch) (4th generation)"
+    case iPadPro129InchGen6 = "iPad Pro (12.9-inch) (6th generation)"
 }
 
 // MARK: - Extensions

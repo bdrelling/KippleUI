@@ -23,11 +23,13 @@ public extension Array where Element == PreviewMatrix.Layout {
     static let currentDevice: Self = [.currentDevice]
 
     static let modernPhones: Self = .devices(
-        .iPhone13,
-        .iPhoneSEGen2
+        .iPhone14,
+        .iPhone14Pro
     )
 
-    static let modernTablets: Self = .device(.iPadPro11InchGen3)
+    static let modernTablets: Self = .devices(
+        .iPadPro11InchGen4
+    )
 
     static let modernDevices: Self = .modernPhones + .modernTablets
 
