@@ -1,5 +1,7 @@
 // Copyright © 2022 Brian Drelling. All rights reserved.
 
+#if !os(tvOS)
+
 import SwiftUI
 
 public extension Slider {
@@ -23,3 +25,5 @@ public extension Slider {
         )
     }
 }
+
+#endif
