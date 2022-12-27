@@ -6,12 +6,12 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 @available(macOS 11.0, iOS 14.0, *)
-struct ReorderableForEach<Content: View, Placeholder: View, Item: Identifiable & Equatable>: View {
-    typealias ContentBlock = (_ item: Item, _ index: Int, _ isDragging: Bool) -> Content
+public struct ReorderableForEach<Content: View, Item: Identifiable & Equatable>: View {
+    public typealias ContentBlock = (_ item: Item, _ index: Int, _ isDragging: Bool) -> Content
 
-    let content: ContentBlock
+    public let content: ContentBlock
 
-    @Binding var items: [Item]
+    @Binding public var items: [Item]
 
     // A little hack that is needed in order to make view back opaque
     // if the drag and drop hasn't ever changed the position
@@ -20,7 +20,7 @@ struct ReorderableForEach<Content: View, Placeholder: View, Item: Identifiable &
 
     @State private var draggingItem: Item?
 
-    init(
+    public init(
         _ items: Binding<[Item]>,
         @ViewBuilder content: @escaping ContentBlock
     ) {
@@ -28,7 +28,7 @@ struct ReorderableForEach<Content: View, Placeholder: View, Item: Identifiable &
         self.content = content
     }
 
-    var body: some View {
+    public var body: some View {
         ForEach(self.items.indices, id: \.self) { index in
             let item = self.items[index]
             let isDragging = self.draggingItem == item && self.hasChangedLocation
@@ -42,7 +42,7 @@ struct ReorderableForEach<Content: View, Placeholder: View, Item: Identifiable &
                     of: [UTType.text],
                     delegate: DragRelocateDelegate(
                         item: item,
-                        listData: self.items,
+                        items: self.items,
                         draggingItem: self.$draggingItem,
                         hasChangedLocation: self.$hasChangedLocation
                     ) { from, to in
@@ -55,47 +55,48 @@ struct ReorderableForEach<Content: View, Placeholder: View, Item: Identifiable &
     }
 }
 
-// MARK: - Convenience
-
-@available(macOS 11.0, iOS 14.0, *)
-extension ReorderableForEach where Placeholder == EmptyView {
-    init(
-        _ items: Binding<[Item]>,
-        @ViewBuilder content: @escaping ContentBlock
-    ) {
-        self._items = items
-        self.content = content
-    }
-}
-
 // MARK: - Supporting Types
 
 @available(macOS 11.0, iOS 14.0, *)
-private struct DragRelocateDelegate<Item: Equatable>: DropDelegate {
-    let item: Item
-    var listData: [Item]
+public struct DragRelocateDelegate<Item: Equatable>: DropDelegate {
+    public let item: Item
+    public var items: [Item]
 
-    @Binding var draggingItem: Item?
-    @Binding var hasChangedLocation: Bool
+    @Binding public var draggingItem: Item?
+    @Binding public var hasChangedLocation: Bool
 
-    let moveAction: (IndexSet, Int) -> Void
+    public let moveAction: (IndexSet, Int) -> Void
 
-    func dropEntered(info: DropInfo) {
+    public init(
+        item: Item,
+        items: [Item],
+        draggingItem: Binding<Item?>,
+        hasChangedLocation: Binding<Bool>,
+        moveAction: @escaping (IndexSet, Int) -> Void
+    ) {
+        self.item = item
+        self.items = items
+        self._draggingItem = draggingItem
+        self._hasChangedLocation = hasChangedLocation
+        self.moveAction = moveAction
+    }
+
+    public func dropEntered(info: DropInfo) {
         guard let draggingItem = self.draggingItem, self.item != self.draggingItem else { return }
-        guard let from = self.listData.firstIndex(of: draggingItem), let to = self.listData.firstIndex(of: self.item) else { return }
+        guard let from = self.items.firstIndex(of: draggingItem), let to = self.items.firstIndex(of: self.item) else { return }
 
         self.hasChangedLocation = true
 
-        if self.listData[to] != draggingItem {
+        if self.items[to] != draggingItem {
             self.moveAction(IndexSet(integer: from), to > from ? to + 1 : to)
         }
     }
 
-    func dropUpdated(info: DropInfo) -> DropProposal? {
+    public func dropUpdated(info: DropInfo) -> DropProposal? {
         DropProposal(operation: .move)
     }
 
-    func performDrop(info: DropInfo) -> Bool {
+    public func performDrop(info: DropInfo) -> Bool {
         self.hasChangedLocation = false
         self.draggingItem = nil
         return true
