@@ -7,13 +7,11 @@ import UniformTypeIdentifiers
 
 @available(macOS 11.0, iOS 14.0, *)
 struct ReorderableForEach<Content: View, Placeholder: View, Item: Identifiable & Equatable>: View {
-    typealias ContentBlock = (Item, Int) -> Content
-    typealias PlaceholderBlock = (Item, Int) -> Placeholder
+    typealias ContentBlock = (_ item: Item, _ index: Int, _ isDragging: Bool) -> Content
 
-    let items: [Item]
     let content: ContentBlock
-    let placeholder: PlaceholderBlock?
-    let moveAction: (IndexSet, Int) -> Void
+
+    @Binding var items: [Item]
 
     // A little hack that is needed in order to make view back opaque
     // if the drag and drop hasn't ever changed the position
@@ -23,15 +21,11 @@ struct ReorderableForEach<Content: View, Placeholder: View, Item: Identifiable &
     @State private var draggingItem: Item?
 
     init(
-        _ items: [Item],
-        @ViewBuilder content: @escaping ContentBlock,
-        @ViewBuilder placeholder: @escaping PlaceholderBlock,
-        moveAction: @escaping (IndexSet, Int) -> Void
+        _ items: Binding<[Item]>,
+        @ViewBuilder content: @escaping ContentBlock
     ) {
-        self.items = items
+        self._items = items
         self.content = content
-        self.placeholder = placeholder
-        self.moveAction = moveAction
     }
 
     var body: some View {
@@ -39,36 +33,24 @@ struct ReorderableForEach<Content: View, Placeholder: View, Item: Identifiable &
             let item = self.items[index]
             let isDragging = self.draggingItem == item && self.hasChangedLocation
 
-            Group {
-                if isDragging {
-                    // If a placeholder was provided, use it,
-                    // otherwise just re-use the content view and make it translucent.
-                    if let placeholder = self.placeholder {
-                        placeholder(item, index)
-                    } else {
-                        self.content(item, index).opacity(0.35)
-                    }
-                } else {
-                    self.content(item, index)
+            self.content(item, index, isDragging)
+                .onDrag {
+                    self.draggingItem = item
+                    return NSItemProvider(object: "\(item.id)" as NSString)
                 }
-            }
-            .onDrag {
-                self.draggingItem = item
-                return NSItemProvider(object: "\(item.id)" as NSString)
-            }
-            .onDrop(
-                of: [UTType.text],
-                delegate: DragRelocateDelegate(
-                    item: item,
-                    listData: self.items,
-                    draggingItem: self.$draggingItem,
-                    hasChangedLocation: self.$hasChangedLocation
-                ) { from, to in
-                    withAnimation {
-                        moveAction(from, to)
+                .onDrop(
+                    of: [UTType.text],
+                    delegate: DragRelocateDelegate(
+                        item: item,
+                        listData: self.items,
+                        draggingItem: self.$draggingItem,
+                        hasChangedLocation: self.$hasChangedLocation
+                    ) { from, to in
+                        withAnimation {
+                            self.items.move(fromOffsets: from, toOffset: to)
+                        }
                     }
-                }
-            )
+                )
         }
     }
 }
@@ -78,14 +60,11 @@ struct ReorderableForEach<Content: View, Placeholder: View, Item: Identifiable &
 @available(macOS 11.0, iOS 14.0, *)
 extension ReorderableForEach where Placeholder == EmptyView {
     init(
-        _ items: [Item],
-        @ViewBuilder content: @escaping ContentBlock,
-        moveAction: @escaping (IndexSet, Int) -> Void
+        _ items: Binding<[Item]>,
+        @ViewBuilder content: @escaping ContentBlock
     ) {
-        self.items = items
+        self._items = items
         self.content = content
-        self.placeholder = nil
-        self.moveAction = moveAction
     }
 }
 
