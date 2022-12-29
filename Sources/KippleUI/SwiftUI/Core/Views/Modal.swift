@@ -17,7 +17,7 @@ public struct Modal<Content>: View where Content: View {
         #else
         NavigationView {
             self.content()
-                .withFauxNaivgationBarBackground()
+                .withFauxNavigationBarBackground()
                 .navigationBarTitleDisplayMode(.inline)
                 .withNavigationBarDoneButton()
         }

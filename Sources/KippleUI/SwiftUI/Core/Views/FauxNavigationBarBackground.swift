@@ -26,13 +26,13 @@ public struct FauxNavigationBarBackground<Content>: View where Content: View {
 // MARK: - Extensions
 
 public extension View {
-    func withFauxNaivgationBarBackground<Content>(@ViewBuilder _ content: @escaping () -> Content) -> some View where Content: View {
+    func withFauxNavigationBarBackground<Content>(@ViewBuilder _ content: @escaping () -> Content) -> some View where Content: View {
         self.overlay(FauxNavigationBarBackground(content))
     }
 }
 
 public extension View {
-    func withFauxNaivgationBarBackground() -> some View {
+    func withFauxNavigationBarBackground() -> some View {
         self.overlay(FauxNavigationBarBackground())
     }
 }
