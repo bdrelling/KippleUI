@@ -12,12 +12,12 @@ let package = Package(
     ],
     products: [
         .library(name: "KippleDevice", targets: ["KippleDevice"]),
-        .library(name: "KippleUI", targets: ["KippleUI", "SafeNavigationKit"]),
-        .library(name: "SafeNavigationKit", targets: ["SafeNavigationKit"]),
+        .library(name: "KippleUI", targets: ["KippleUI"]),
     ],
     dependencies: [
+        .package(url: "https://github.com/Nirma/UIDeviceComplete", from: "2.8.1"),
         .package(url: "https://github.com/swift-kipple/Core", .upToNextMinor(from: "0.11.0")),
-        .package(url: "https://github.com/Nirma/UIDeviceComplete", .upToNextMajor(from: "2.8.1")),
+        .package(url: "https://github.com/swift-kipple/Tools", from: "0.3.0"),
     ],
     targets: [
         // Product Targets
@@ -34,16 +34,5 @@ let package = Package(
                 .product(name: "KippleCore", package: "Core"),
             ]
         ),
-        .target(
-            name: "SafeNavigationKit",
-            dependencies: []
-        ),
     ]
 )
-
-#if swift(>=5.5)
-// Add Kipple Tools if possible.
-package.dependencies.append(
-    .package(url: "https://github.com/swift-kipple/Tools", from: "0.3.0")
-)
-#endif

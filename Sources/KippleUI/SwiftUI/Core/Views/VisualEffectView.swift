@@ -1,8 +1,8 @@
-// Copyright © 2022 Brian Drelling. All rights reserved.
-
-#if canImport(UIKit) && !os(watchOS)
+// Copyright © 2023 Brian Drelling. All rights reserved.
 
 import SwiftUI
+
+#if canImport(UIKit) && !os(watchOS)
 
 public struct VisualEffectView: UIViewRepresentable {
     private let effect: UIVisualEffect?
@@ -16,6 +16,16 @@ public struct VisualEffectView: UIViewRepresentable {
 
     public init(blur style: UIBlurEffect.Style) {
         self.init(effect: UIBlurEffect(style: style))
+    }
+}
+
+#elseif os(macOS)
+
+@available(macOS 12.0, *)
+public struct VisualEffectView: View {
+    public var body: some View {
+        Rectangle()
+            .fill(.regularMaterial)
     }
 }
 

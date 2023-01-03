@@ -1,4 +1,4 @@
-// Copyright © 2022 Brian Drelling. All rights reserved.
+// Copyright © 2023 Brian Drelling. All rights reserved.
 
 #if !os(tvOS)
 
@@ -9,9 +9,9 @@ public extension Slider {
         value: Binding<V>,
         in bounds: ClosedRange<V>,
         step: V.Stride = 1,
-        @ViewBuilder label: () -> Label,
-        @ViewBuilder minimumValueLabel: () -> ValueLabel,
-        @ViewBuilder maximumValueLabel: () -> ValueLabel,
+        @ViewBuilder label: () -> Label = { EmptyView() },
+        @ViewBuilder minimumValueLabel: () -> ValueLabel = { EmptyView() },
+        @ViewBuilder maximumValueLabel: () -> ValueLabel = { EmptyView() },
         onEditingChanged: @escaping (Bool) -> Void = { _ in }
     ) where V: BinaryInteger, V.Stride: BinaryInteger {
         self.init(

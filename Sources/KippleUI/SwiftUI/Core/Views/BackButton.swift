@@ -1,19 +1,37 @@
-// Copyright © 2022 Brian Drelling. All rights reserved.
+// Copyright © 2023 Brian Drelling. All rights reserved.
 
 import SwiftUI
 
+@available(iOS 15, macOS 12, tvOS 15, watchOS 8, *)
 public struct BackButton<Content: View>: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
-    public let content: () -> Content
+    private let content: () -> Content
+    private let visibility: Visibility
 
-    public var body: some View {
-        Button(action: self.dismiss) {
-            self.content()
+    private var isVisible: Bool {
+        switch self.visibility {
+        case .visible:
+            return true
+        case .hidden:
+            return false
+        case .automatic:
+            return self.presentationMode.wrappedValue.isPresented
         }
     }
 
-    public init(@ViewBuilder content: @escaping () -> Content) {
+    public var body: some View {
+        if self.isVisible {
+            Button(action: self.dismiss) {
+                self.content()
+            }
+        } else {
+            EmptyView()
+        }
+    }
+
+    public init(visibility: Visibility = .automatic, @ViewBuilder content: @escaping () -> Content) {
+        self.visibility = visibility
         self.content = content
     }
 
@@ -53,21 +71,19 @@ public struct BackButtonPreviewer<Content>: View where Content: View {
 @available(iOS 16, macOS 13, tvOS 16, watchOS 9, *)
 public extension View {
     func withBackButton<Content: View>(@ViewBuilder content: @escaping () -> Content) -> some View {
-        Group {
-            if #unavailable(iOS 14, macOS 11, tvOS 14, watchOS 7) {
-                self
-                    .navigationBarBackButtonHidden(true)
-                    .navigationBarItems(leading: content())
-            } else {
-                self
-                    .navigationBarBackButtonHidden(true)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            BackButton(content: content)
-                        }
-                    }
+        self
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                #if os(macOS)
+                ToolbarItem(placement: .principal) {
+                    BackButton(content: content)
+                }
+                #else
+                ToolbarItem(placement: .navigationBarLeading) {
+                    BackButton(content: content)
+                }
+                #endif
             }
-        }
     }
 }
 
