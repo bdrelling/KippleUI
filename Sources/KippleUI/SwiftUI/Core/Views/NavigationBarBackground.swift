@@ -1,10 +1,10 @@
-// Copyright © 2022 Brian Drelling. All rights reserved.
+// Copyright © 2023 Brian Drelling. All rights reserved.
 
 #if os(iOS)
 
 import SwiftUI
 
-public struct FauxNavigationBarBackground<Content>: View where Content: View {
+public struct NavigationBarBackground<Content>: View where Content: View {
     private let content: () -> Content
 
     public var body: some View {
@@ -26,28 +26,14 @@ public struct FauxNavigationBarBackground<Content>: View where Content: View {
 // MARK: - Extensions
 
 public extension View {
-    func withFauxNavigationBarBackground<Content>(@ViewBuilder _ content: @escaping () -> Content) -> some View where Content: View {
-        self.overlay(FauxNavigationBarBackground(content))
-    }
-}
-
-public extension View {
-    func withFauxNavigationBarBackground() -> some View {
-        self.overlay(FauxNavigationBarBackground())
-    }
-}
-
-public extension FauxNavigationBarBackground where Content == VisualEffectView {
-    init() {
-        self.init {
-            VisualEffectView(effect: UIBlurEffect(style: .regular))
-        }
+    func withNavigationBarBackground<Content>(@ViewBuilder _ content: @escaping () -> Content) -> some View where Content: View {
+        self.overlay(NavigationBarBackground(content))
     }
 }
 
 // MARK: - Previews
 
-struct FauxNavigationBarBackground_Previews: PreviewProvider {
+struct NavigationBarBackground_Previews: PreviewProvider {
     private static let displayModes: [NavigationBarItem.TitleDisplayMode] = [
         .inline,
         .large,
@@ -57,7 +43,7 @@ struct FauxNavigationBarBackground_Previews: PreviewProvider {
         ForEach(self.displayModes, id: \.self) { displayMode in
             NavigationView {
                 ZStack {
-                    FauxNavigationBarBackground {
+                    NavigationBarBackground {
                         Color.blue
                     }
 

@@ -1,4 +1,4 @@
-// Copyright © 2022 Brian Drelling. All rights reserved.
+// Copyright © 2023 Brian Drelling. All rights reserved.
 
 #if canImport(UIKit) && !os(watchOS)
 
@@ -17,7 +17,10 @@ public struct Modal<Content>: View where Content: View {
         #else
         NavigationView {
             self.content()
-                .withFauxNavigationBarBackground()
+                .withNavigationBarBackground {
+                    Rectangle()
+                        .fill(.regularMaterial)
+                }
                 .navigationBarTitleDisplayMode(.inline)
                 .withNavigationBarDoneButton()
         }
