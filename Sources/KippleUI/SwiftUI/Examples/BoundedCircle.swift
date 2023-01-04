@@ -1,5 +1,7 @@
 // Copyright © 2023 Brian Drelling. All rights reserved.
 
+#if !os(tvOS)
+
 import SwiftUI
 
 private struct Example_BoundedCircle: View {
@@ -44,3 +46,5 @@ struct Example_BoundedCircle_Previews: PreviewProvider {
         Example_BoundedCircle()
     }
 }
+
+#endif
