@@ -12,3 +12,9 @@ public extension EnvironmentValues {
         set { self[IsDebuggingKey.self] = newValue }
     }
 }
+
+public extension View {
+    func isDebugging(_ isDebugging: Bool) -> some View {
+        self.environment(\.isDebugging, isDebugging)
+    }
+}
