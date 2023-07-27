@@ -1,6 +1,4 @@
-// Copyright © 2022 Brian Drelling. All rights reserved.
-
-#if canImport(UIKit)
+// Copyright © 2023 Brian Drelling. All rights reserved.
 
 import SwiftUI
 
@@ -28,14 +26,20 @@ public extension View {
     func withNavigationBarDoneButton(if condition: Bool = true) -> some View {
         DismissReader { dismiss in
             self.toolbar {
+                #if os(iOS)
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: { dismiss() }) {
                         Text("Done")
                     }
                 }
+                #elseif os(macOS)
+                ToolbarItem(placement: .navigation) {
+                    Button(action: { dismiss() }) {
+                        Text("Done")
+                    }
+                }
+                #endif
             }
         }
     }
 }
-
-#endif
