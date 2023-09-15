@@ -25,36 +25,6 @@ public extension Kipple {
     /// A convenience alias for one quarter of the default SwiftUI padding value.
     static let defaultPaddingQuarter = Self.defaultPadding / 4
 
-    /// Whether or not the app is running unit or UI tests.
-    static var isRunningTests: Bool {
-        self.isRunningUnitTests || self.isRunningUITests
-    }
-
-    /// Whether or not the app is running unit tests.
-    static var isRunningUnitTests: Bool {
-        NSClassFromString("XCTestCase") != nil
-    }
-
-    /// Whether or not the app is running UI tests.
-    static var isRunningUITests: Bool {
-        ProcessInfo.processInfo.arguments.contains("-ui_testing")
-    }
-
-    /// Whether or not the application should mock external services, from networking to hardware operations.
-    /// This is used primarily for testing and Xcode Previews in order to improve performance.
-    static var shouldMockExternalServices: Bool {
-        Kipple.isRunningTests || Kipple.isRunningInXcodePreview
-    }
-
-    /// Whether or not the app is in a debugging state.
-    static var isDebugging: Bool {
-        #if DEBUG
-        true
-        #else
-        false
-        #endif
-    }
-
     // TODO: Update to include
     /// The current device type.
     static var deviceType: DeviceType {
@@ -90,4 +60,23 @@ public enum DeviceType {
     case tv
     case mac
     case watch
+}
+
+@available(*, deprecated, message: "Use Bool+Convenience extensions instead.")
+extension Kipple {
+    /// Whether or not the app is running unit or UI tests.
+    static var isRunningTests: Bool = .isRunningTests
+
+    /// Whether or not the app is running unit tests.
+    static var isRunningUnitTests: Bool = .isRunningUnitTests
+
+    /// Whether or not the app is running UI tests.
+    static var isRunningUITests: Bool = .isRunningUITests
+
+    /// Whether or not the app is in a debugging state.
+    static var isDebugging: Bool = .isDebugging
+
+    /// Whether or not the application should mock external services, from networking to hardware operations.
+    /// This is used primarily for testing and Xcode Previews in order to improve performance.
+    static var shouldMockExternalServices: Bool = .shouldMockExternalServices
 }

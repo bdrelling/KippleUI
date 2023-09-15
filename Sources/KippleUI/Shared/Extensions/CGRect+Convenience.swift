@@ -1,6 +1,6 @@
 // Copyright © 2023 Brian Drelling. All rights reserved.
 
-import SwiftUI
+import CoreGraphics
 
 public extension CGRect {
     var center: CGPoint {
