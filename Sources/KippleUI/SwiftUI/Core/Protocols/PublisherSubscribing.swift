@@ -1,4 +1,4 @@
-// Copyright © 2022 Brian Drelling. All rights reserved.
+// Copyright © 2023 Brian Drelling. All rights reserved.
 
 import Combine
 import KippleCore
@@ -12,7 +12,7 @@ public protocol PublisherSubscribing: ObservableObject {
 
 public extension PublisherSubscribing {
     func onAppear() {
-        guard !Kipple.isRunningInXcodePreview else {
+        guard !.isRunningInXcodePreview else {
             return
         }
 
