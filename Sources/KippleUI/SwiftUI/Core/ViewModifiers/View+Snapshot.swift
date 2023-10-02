@@ -1,5 +1,7 @@
 // Copyright © 2023 Brian Drelling. All rights reserved.
 
+#if canImport(UIKit)
+
 import SwiftUI
 
 public extension View {
@@ -35,3 +37,5 @@ struct ViewSnapshot_Previews: PreviewProvider {
             .snapshot()
     }
 }
+
+#endif
