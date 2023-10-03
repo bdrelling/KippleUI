@@ -6,10 +6,10 @@ public struct Triangle: Shape {
     public func path(in rect: CGRect) -> Path {
         var path = Path()
 
-        path.move(to: .init(x: rect.minX, y: rect.minY))
-        path.addLine(to: .init(x: rect.maxX, y: rect.minY))
-        path.addLine(to: .init(x: rect.midX, y: rect.maxY))
-        path.addLine(to: .init(x: rect.minX, y: rect.minY))
+        path.move(to: .init(x: rect.midX, y: rect.minY))
+        path.addLine(to: .init(x: rect.minX, y: rect.maxY))
+        path.addLine(to: .init(x: rect.maxX, y: rect.maxY))
+        path.addLine(to: .init(x: rect.midX, y: rect.minY))
 
         return path
     }

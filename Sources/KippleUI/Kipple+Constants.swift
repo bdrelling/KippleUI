@@ -62,21 +62,20 @@ public enum DeviceType {
     case watch
 }
 
-@available(*, deprecated, message: "Use Bool+Convenience extensions instead.")
 extension Kipple {
     /// Whether or not the app is running unit or UI tests.
-    static var isRunningTests: Bool = .isRunningTests
+    @available(*, deprecated, message: "Use Bool+Convenience extensions instead.") static var isRunningTests: Bool = .isRunningTests
 
     /// Whether or not the app is running unit tests.
-    static var isRunningUnitTests: Bool = .isRunningUnitTests
+    @available(*, deprecated, message: "Use Bool+Convenience extensions instead.") static var isRunningUnitTests: Bool = .isRunningUnitTests
 
     /// Whether or not the app is running UI tests.
-    static var isRunningUITests: Bool = .isRunningUITests
+    @available(*, deprecated, message: "Use Bool+Convenience extensions instead.") static var isRunningUITests: Bool = .isRunningUITests
 
     /// Whether or not the app is in a debugging state.
-    static var isDebugging: Bool = .isDebugging
+    @available(*, deprecated, message: "Use Bool+Convenience extensions instead.") static var isDebugging: Bool = .isDebugging
 
     /// Whether or not the application should mock external services, from networking to hardware operations.
     /// This is used primarily for testing and Xcode Previews in order to improve performance.
-    static var shouldMockExternalServices: Bool = .shouldMockExternalServices
+    @available(*, deprecated, message: "Use Bool+Convenience extensions instead.") static var shouldMockExternalServices: Bool = .shouldMockExternalServices
 }

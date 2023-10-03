@@ -2,6 +2,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, macOS 13.0, *)
 public extension LazyVGrid {
     init(
         columns: Int,
