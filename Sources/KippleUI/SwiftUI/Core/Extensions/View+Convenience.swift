@@ -12,12 +12,15 @@ public extension View {
     }
 
     @ViewBuilder
-    func frame(size: CGSize) -> some View {
-        self.frame(width: size.width, height: size.height)
+    func frame(size: CGSize?) -> some View {
+        self.frame(width: size?.width, height: size?.height)
     }
 
-    func offset(_ offset: CGPoint) -> some View {
-        self.offset(x: offset.x, y: offset.y)
+    func offset(_ offset: CGPoint?) -> some View {
+        self.offset(
+            x: offset?.x ?? 0,
+            y: offset?.y ?? 0
+        )
     }
 
     @ViewBuilder
