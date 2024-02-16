@@ -25,8 +25,8 @@ public extension LazyVGrid {
         columns: Int,
         gridItemSize: GridItem.Size = .flexible(),
         alignment: HorizontalAlignment = .center,
-        verticalSpacing: CGFloat? = nil,
-        horizontalSpacing: CGFloat? = nil,
+        spacing: CGFloat? = nil,
+        horizontalSpacing: CGFloat,
         pinnedViews: PinnedScrollableViews = .init(),
         @ViewBuilder content: () -> Content
     ) {
@@ -34,7 +34,7 @@ public extension LazyVGrid {
             columns: columns,
             gridItem: .init(.flexible(), spacing: horizontalSpacing),
             alignment: alignment,
-            spacing: verticalSpacing,
+            spacing: spacing,
             pinnedViews: pinnedViews,
             content: content
         )
