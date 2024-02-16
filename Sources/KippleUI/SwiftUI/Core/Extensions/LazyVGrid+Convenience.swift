@@ -1,4 +1,4 @@
-// Copyright © 2023 Brian Drelling. All rights reserved.
+// Copyright © 2024 Brian Drelling. All rights reserved.
 
 import SwiftUI
 
@@ -20,7 +20,7 @@ public extension LazyVGrid {
             content: content
         )
     }
-    
+
     init(
         columns: Int,
         gridItemSize: GridItem.Size = .flexible(),
