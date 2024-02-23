@@ -1,9 +1,11 @@
+// Copyright © 2024 Brian Drelling. All rights reserved.
+
 import SwiftUI
 
 private struct BlendModePreviewer: ViewModifier {
     let columns: Int
     let spacing: CGFloat
-    
+
     func body(content: Content) -> some View {
         ScrollView {
             LazyVGrid(
