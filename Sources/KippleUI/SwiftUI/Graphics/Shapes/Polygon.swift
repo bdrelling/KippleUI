@@ -1,9 +1,11 @@
+// Copyright © 2024 Brian Drelling. All rights reserved.
+
 import SwiftUI
 
 // Source: https://swiftui-lab.com/swiftui-animations-part1/
 public struct Polygon: Shape {
     public let sides: Double
-    
+
     public init(sides: Double) {
         self.sides = sides
     }

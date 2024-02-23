@@ -1,8 +1,10 @@
+// Copyright © 2024 Brian Drelling. All rights reserved.
+
 import SwiftUI
 
 public struct Quadrilateral: Shape {
     public let points: [UnitPoint]
-    
+
     public init(points: [UnitPoint] = .quadrilateralDefault) {
         if points.count >= 4 {
             self.points = Array(points.prefix(4))
@@ -13,17 +15,17 @@ public struct Quadrilateral: Shape {
 
     public func path(in rect: CGRect) -> Path {
         var path = Path()
-        
+
         for (index, point) in self.points.enumerated() {
             let point = point.in(rect)
-            
+
             if index == 0 {
                 path.move(to: point)
             } else {
                 path.addLine(to: point)
             }
         }
-        
+
         path.closeSubpath()
 
         return path
@@ -52,7 +54,7 @@ extension UnitPoint {
         Quadrilateral()
             .fill(.red)
             .aspectRatio(contentMode: .fit)
-        
+
         Quadrilateral(points: [.topLeading, .top, .bottomTrailing, .bottomLeading])
             .fill(.red)
             .aspectRatio(contentMode: .fit)

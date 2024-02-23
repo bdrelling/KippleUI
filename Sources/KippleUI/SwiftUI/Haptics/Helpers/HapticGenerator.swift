@@ -1,9 +1,11 @@
+// Copyright © 2024 Brian Drelling. All rights reserved.
+
 import Combine
 import CoreHaptics
 
 public final class HapticGenerator {
     // MARK: Properties
-    
+
     public static let shared = HapticGenerator()
 
     private var hapticEngine: CHHapticEngine?
@@ -11,13 +13,13 @@ public final class HapticGenerator {
     public var supportsHaptics: Bool {
         CHHapticEngine.capabilitiesForHardware().supportsHaptics
     }
-    
+
     // MARK: Initializers
 
     private init() {
         self.initialize()
     }
-    
+
     // MARK: Methods
 
     private func initialize() {
@@ -50,11 +52,11 @@ public final class HapticGenerator {
             .stopEngine
         }
     }
-    
+
     public func tap() throws {
         try self.play(pattern: .tap())
     }
-    
+
     public func rumble(duration: TimeInterval) throws {
         try self.play(pattern: .rumble(duration: duration))
     }
@@ -85,7 +87,7 @@ public extension CHHapticPattern {
             parameters: []
         )
     }
-    
+
     static func rumble(duration: TimeInterval) throws -> CHHapticPattern {
         try .init(
             events: [

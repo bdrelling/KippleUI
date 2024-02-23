@@ -8,10 +8,10 @@ public struct NavigatorStack<Content>: View where Content: View {
     private let content: (Navigator) -> Content
 
     public var body: some View {
-        NavigationStack(path: $navigator.path) {
-            content(navigator)
+        NavigationStack(path: self.$navigator.path) {
+            self.content(self.navigator)
         }
-        .environment(\.navigator, navigator)
+        .environment(\.navigator, self.navigator)
     }
 
     public init(
@@ -57,20 +57,20 @@ public final class Navigator {
 
     /// Pushes the provided value onto the navigation path.
     public func push<PathComponent>(_ component: PathComponent) where PathComponent: Hashable {
-        path.append(component)
+        self.path.append(component)
     }
 
     /// Pops the current view off the navigation stack.
     /// - Parameter count: The number of views to pop off the stack. If this value is greater than the total number of views in the stack, this method will do nothing.
     public func pop(_ count: Int = 1) {
         // If we're popping an item off of the path, the path should not be empty.
-        guard !path.isEmpty, path.count >= count else { return }
-        path.removeLast(count)
+        guard !self.path.isEmpty, self.path.count >= count else { return }
+        self.path.removeLast(count)
     }
 
     /// Resets the `path` to return to its root view.
     public func popToRoot() {
-        path = .init()
+        self.path = .init()
     }
 }
 

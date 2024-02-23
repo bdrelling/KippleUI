@@ -1,3 +1,5 @@
+// Copyright © 2024 Brian Drelling. All rights reserved.
+
 import SwiftUI
 
 // Source: https://www.hackingwithswift.com/quick-start/swiftui/how-to-draw-polygons-and-stars
@@ -8,7 +10,7 @@ public struct Star: Shape {
 
     public func path(in rect: CGRect) -> Path {
         // ensure we have at least two corners, otherwise send back an empty path
-        guard corners >= 2 else { return Path() }
+        guard self.corners >= 2 else { return Path() }
 
         // draw from the center of our rectangle
         let center = CGPoint(x: rect.width / 2, y: rect.height / 2)
@@ -17,11 +19,11 @@ public struct Star: Shape {
         var currentAngle = -CGFloat.pi / 2
 
         // calculate how much we need to move with each star corner
-        let angleAdjustment = .pi * 2 / Double(corners * 2)
+        let angleAdjustment = .pi * 2 / Double(self.corners * 2)
 
         // figure out how much we need to move X/Y for the inner points of the star
-        let innerX = center.x * smoothness
-        let innerY = center.y * smoothness
+        let innerX = center.x * self.smoothness
+        let innerY = center.y * self.smoothness
 
         // we're ready to start with our path now
         var path = Path()
@@ -33,7 +35,7 @@ public struct Star: Shape {
         var bottomEdge: Double = 0
 
         // loop over all our points/inner points
-        for corner in 0..<corners * 2  {
+        for corner in 0 ..< self.corners * 2 {
             // figure out the location of this point
             let sinAngle = sin(currentAngle)
             let cosAngle = cos(currentAngle)
@@ -72,7 +74,7 @@ public struct Star: Shape {
         let transform = CGAffineTransform(translationX: center.x, y: center.y + unusedSpace)
         return path.applying(transform)
     }
-    
+
     init(corners: Int = 5, smoothness: Double = 0.45) {
         self.corners = corners
         self.smoothness = smoothness
