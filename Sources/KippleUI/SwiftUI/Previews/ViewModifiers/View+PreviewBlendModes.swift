@@ -24,7 +24,6 @@ private struct BlendModePreviewer: ViewModifier {
             .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .background(Color(hex: 0xCCCCCC).ignoresSafeArea())
     }
 }
 
