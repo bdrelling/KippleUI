@@ -6,13 +6,33 @@ import SwiftUI
 public extension LazyHGrid {
     init(
         rows: Int,
+        gridItem: GridItem = .init(.flexible()),
         alignment: VerticalAlignment = .center,
         spacing: CGFloat? = nil,
         pinnedViews: PinnedScrollableViews = .init(),
         @ViewBuilder content: () -> Content
     ) {
         self.init(
-            rows: Array(repeating: .init(.flexible()), count: rows),
+            rows: Array(repeating: gridItem, count: rows),
+            alignment: alignment,
+            spacing: spacing,
+            pinnedViews: pinnedViews,
+            content: content
+        )
+    }
+    
+    init(
+        rows: Int,
+        gridItemSize: GridItem.Size = .flexible(),
+        alignment: VerticalAlignment = .center,
+        spacing: CGFloat? = nil,
+        verticalSpacing: CGFloat,
+        pinnedViews: PinnedScrollableViews = .init(),
+        @ViewBuilder content: () -> Content
+    ) {
+        self.init(
+            rows: rows,
+            gridItem: .init(.flexible(), spacing: verticalSpacing),
             alignment: alignment,
             spacing: spacing,
             pinnedViews: pinnedViews,

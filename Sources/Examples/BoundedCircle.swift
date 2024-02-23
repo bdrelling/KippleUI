@@ -1,4 +1,4 @@
-// Copyright © 2023 Brian Drelling. All rights reserved.
+// Copyright © 2024 Brian Drelling. All rights reserved.
 
 #if !os(tvOS)
 
@@ -9,15 +9,15 @@ private struct Example_BoundedCircle: View {
     private var dragDiametr: CGFloat = 200.0
     var body: some View {
         VStack {
-            Text("current position = (x: \(Int(position.x)), y: \(Int(position.y)))")
+            Text("current position = (x: \(Int(self.position.x)), y: \(Int(self.position.y)))")
             Circle()
                 .fill(Color.secondary)
-                .frame(width: dragDiametr, height: dragDiametr)
+                .frame(width: self.dragDiametr, height: self.dragDiametr)
                 .overlay(
                     Circle()
                         .fill(Color.primary)
-                        .frame(width: dragDiametr / 4, height: dragDiametr / 4)
-                        .position(x: position.x, y: position.y)
+                        .frame(width: self.dragDiametr / 4, height: self.dragDiametr / 4)
+                        .position(x: self.position.x, y: self.position.y)
                         .gesture(
                             DragGesture()
                                 .onChanged { value in

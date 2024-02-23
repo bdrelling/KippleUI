@@ -3,6 +3,7 @@
 import SwiftUI
 
 // source: https://www.hackingwithswift.com/quick-start/swiftui/how-to-fill-and-stroke-shapes-at-the-same-time
+@available(iOS, deprecated: 17, message: "Chain .fill() directly after .stroke() instead of using this method.")
 public extension Shape {
     func fill<Fill: ShapeStyle, Stroke: ShapeStyle>(_ fillStyle: Fill, strokeBorder strokeStyle: Stroke, lineWidth: Double = 1) -> some View {
         self
@@ -12,6 +13,7 @@ public extension Shape {
 }
 
 // source: https://www.hackingwithswift.com/quick-start/swiftui/how-to-fill-and-stroke-shapes-at-the-same-time
+@available(iOS, deprecated: 17, message: "Chain .fill() directly after .stroke() instead of using this method.")
 public extension InsettableShape {
     func fill<Fill: ShapeStyle, Stroke: ShapeStyle>(_ fillStyle: Fill, strokeBorder strokeStyle: Stroke, lineWidth: Double = 1) -> some View {
         self

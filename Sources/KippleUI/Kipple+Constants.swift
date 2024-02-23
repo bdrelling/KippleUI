@@ -1,4 +1,4 @@
-// Copyright © 2023 Brian Drelling. All rights reserved.
+// Copyright © 2024 Brian Drelling. All rights reserved.
 
 import CoreGraphics
 import Foundation
@@ -60,22 +60,4 @@ public enum DeviceType {
     case tv
     case mac
     case watch
-}
-
-extension Kipple {
-    /// Whether or not the app is running unit or UI tests.
-    @available(*, deprecated, message: "Use Bool+Convenience extensions instead.") static var isRunningTests: Bool = .isRunningTests
-
-    /// Whether or not the app is running unit tests.
-    @available(*, deprecated, message: "Use Bool+Convenience extensions instead.") static var isRunningUnitTests: Bool = .isRunningUnitTests
-
-    /// Whether or not the app is running UI tests.
-    @available(*, deprecated, message: "Use Bool+Convenience extensions instead.") static var isRunningUITests: Bool = .isRunningUITests
-
-    /// Whether or not the app is in a debugging state.
-    @available(*, deprecated, message: "Use Bool+Convenience extensions instead.") static var isDebugging: Bool = .isDebugging
-
-    /// Whether or not the application should mock external services, from networking to hardware operations.
-    /// This is used primarily for testing and Xcode Previews in order to improve performance.
-    @available(*, deprecated, message: "Use Bool+Convenience extensions instead.") static var shouldMockExternalServices: Bool = .shouldMockExternalServices
 }

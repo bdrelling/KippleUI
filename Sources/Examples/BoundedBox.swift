@@ -1,4 +1,4 @@
-// Copyright © 2023 Brian Drelling. All rights reserved.
+// Copyright © 2024 Brian Drelling. All rights reserved.
 
 #if !os(tvOS)
 
@@ -10,11 +10,11 @@ private struct Example_BoundedBox: View {
 
     var body: some View {
         VStack {
-            Text("Current postion = (x: \(Int(position.x)), y: \(Int(position.y)))")
+            Text("Current postion = (x: \(Int(self.position.x)), y: \(Int(self.position.y)))")
 
             GeometryReader { geometry in
                 self.square
-                    .position(position)
+                    .position(self.position)
                     .gesture(
                         DragGesture()
                             .onChanged { value in

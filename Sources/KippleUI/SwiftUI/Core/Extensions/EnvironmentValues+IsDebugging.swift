@@ -1,4 +1,4 @@
-// Copyright © 2023 Brian Drelling. All rights reserved.
+// Copyright © 2024 Brian Drelling. All rights reserved.
 
 import SwiftUI
 
@@ -12,6 +12,8 @@ public extension EnvironmentValues {
         set { self[IsDebuggingKey.self] = newValue }
     }
 }
+
+// MARK: - Extensions
 
 public extension View {
     func isDebugging(_ isDebugging: Bool) -> some View {

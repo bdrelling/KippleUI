@@ -20,6 +20,8 @@ public struct ViewDidLoadModifier: ViewModifier {
     }
 }
 
+// MARK: - Extensions
+
 public extension View {
     func onLoad(perform action: @escaping () -> Void) -> some View {
         self.modifier(ViewDidLoadModifier(perform: action))

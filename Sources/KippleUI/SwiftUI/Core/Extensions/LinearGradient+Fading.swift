@@ -8,9 +8,13 @@ public extension LinearGradient {
         startPoint: UnitPoint = .top,
         endPoint: UnitPoint = .bottom
     ) -> Self {
-        .init(colors: [
-            color,
-            color.opacity(0),
-        ], startPoint: .top, endPoint: .bottom)
+        .init(
+            colors: [
+                color,
+                color.opacity(0),
+            ], 
+            startPoint: startPoint,
+            endPoint: endPoint
+        )
     }
 }
