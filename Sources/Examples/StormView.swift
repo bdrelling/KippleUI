@@ -2,8 +2,9 @@
 
 import SwiftUI
 
+@available(iOS 17.0, macOS 14.0, tvOS 14.0, watchOS 10.0, *)
 private struct StormView: View {
-    @StateObject private var storm = Storm()
+    @State private var storm = Storm()
     let rainColor = Color(red: 0.25, green: 0.5, blue: 0.75)
 
     var body: some View {
@@ -30,7 +31,9 @@ private struct Raindrop: Hashable, Equatable {
     var speed: Double
 }
 
-private class Storm: ObservableObject {
+@available(iOS 17.0, macOS 14.0, tvOS 14.0, watchOS 10.0, *)
+@Observable
+private class Storm {
     var drops = Set<Raindrop>()
 
     func update(to date: Date) {
@@ -41,6 +44,7 @@ private class Storm: ObservableObject {
 
 // MARK: - Previews
 
+@available(iOS 17.0, macOS 14.0, tvOS 14.0, watchOS 10.0, *)
 struct StormView_Previews: PreviewProvider {
     static var previews: some View {
         StormView()

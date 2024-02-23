@@ -27,7 +27,6 @@ public extension Color {
 }
 
 // source: https://blog.eidinger.info/from-hex-to-color-and-back-in-swiftui
-@available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *)
 public extension Color {
     var hex: String? {
         guard let components = UXColor(self).cgColor.components, components.count >= 3 else {

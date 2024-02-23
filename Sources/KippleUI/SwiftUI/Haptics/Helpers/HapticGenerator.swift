@@ -48,9 +48,9 @@ public final class HapticGenerator {
         let player = try hapticEngine.makePlayer(with: pattern)
         try player.start(atTime: delay)
 
-        hapticEngine.notifyWhenPlayersFinished { _ in
-            .stopEngine
-        }
+//        hapticEngine.notifyWhenPlayersFinished { _ in
+//            .stopEngine
+//        }
     }
 
     public func tap() throws {

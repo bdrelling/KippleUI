@@ -4,7 +4,6 @@
 
 import SwiftUI
 
-@available(iOS 15.0, macOS 12.0, watchOS 8.0, *)
 private struct Example_BoundedBox: View {
     @State private var position = CGPoint(x: 100, y: 100)
 
@@ -43,7 +42,6 @@ private struct Example_BoundedBox: View {
 
 // MARK: - Previews
 
-@available(iOS 15.0, macOS 12.0, watchOS 8.0, *)
 struct Example_BoundedBox_Previews: PreviewProvider {
     static var previews: some View {
         Example_BoundedBox()

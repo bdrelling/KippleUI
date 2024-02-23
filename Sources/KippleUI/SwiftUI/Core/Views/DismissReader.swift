@@ -2,7 +2,6 @@
 
 import SwiftUI
 
-@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
 public struct DismissReader<Content>: View where Content: View {
     @Environment(\.dismiss) private var dismiss
 
@@ -19,7 +18,6 @@ public struct DismissReader<Content>: View where Content: View {
 
 // MARK: - Extensions
 
-@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *)
 @available(watchOS, unavailable)
 public extension View {
     /// Adds a dismiss button to the toolbar.
