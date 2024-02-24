@@ -22,7 +22,7 @@ public struct Hexagon: Shape {
     }
 
     public func path(in rect: CGRect) -> Path {
-        Star(corners: 3, smoothness: 1)
+        PointedStar(corners: 3, smoothness: 1)
             .rotation(self.angle)
             .path(in: rect)
     }

@@ -3,7 +3,7 @@
 import SwiftUI
 
 // Source: https://www.hackingwithswift.com/quick-start/swiftui/how-to-draw-polygons-and-stars
-public struct Star: Shape {
+public struct PointedStar: Shape {
     // store how many corners the star has, and how smooth/pointed it is
     private let corners: Int
     private let smoothness: Double
@@ -84,7 +84,7 @@ public struct Star: Shape {
 // MARK: - Previews
 
 #Preview {
-    Star()
+    PointedStar()
         .fill(.red)
         .aspectRatio(contentMode: .fit)
 }
