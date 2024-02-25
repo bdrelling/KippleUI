@@ -1,7 +1,5 @@
 // Copyright © 2024 Brian Drelling. All rights reserved.
 
-#if canImport(UIKit) && !os(watchOS)
-
 import SwiftUI
 
 public struct Modal<Content>: View where Content: View {
@@ -20,7 +18,7 @@ public struct Modal<Content>: View where Content: View {
                     Rectangle()
                         .fill(.regularMaterial)
                 }
-                .navigationBarTitleDisplayMode(.inline)
+//                .navigationBarTitleDisplayMode(.inline)
                 .withNavigationBarDoneButton()
         }
         #endif
@@ -44,5 +42,3 @@ public extension View {
         }
     }
 }
-
-#endif

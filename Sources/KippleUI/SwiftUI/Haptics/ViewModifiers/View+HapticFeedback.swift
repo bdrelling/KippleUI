@@ -1,9 +1,10 @@
 // Copyright © 2024 Brian Drelling. All rights reserved.
 
+import SwiftUI
+
 #if os(iOS)
 
 import Foundation
-import SwiftUI
 
 public extension View {
     private func performHapticFeedback(style: UIImpactFeedbackGenerator.FeedbackStyle) {
@@ -32,6 +33,34 @@ public extension View {
                 UISelectionFeedbackGenerator().selectionChanged()
             }
         })
+    }
+}
+
+#else
+
+// Source: https://developer.apple.com/documentation/uikit/uiimpactfeedbackgenerator/feedbackstyle
+public enum PlatformSafeFeedbackStyle {
+    case heavy
+    case light
+    case medium
+    case rigid
+    case soft
+}
+
+public extension View {
+    func impactFeedbackOnTap(style: PlatformSafeFeedbackStyle = .light, isEnabled: Bool = true) -> some View {
+        // do nothing -- haptic feedback is not supported on other platforms
+        self
+    }
+
+    func simultaneousImpactFeedbackOnTap(style: PlatformSafeFeedbackStyle = .light, isEnabled: Bool = true) -> some View {
+        // do nothing -- haptic feedback is not supported on other platforms
+        self
+    }
+
+    func simultaneousSelectionFeedback(isEnabled: Bool = true) -> some View {
+        // do nothing -- haptic feedback is not supported on other platforms
+        self
     }
 }
 

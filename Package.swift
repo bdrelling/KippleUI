@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version: 5.7
 
 import PackageDescription
 
@@ -12,11 +12,12 @@ let package = Package(
     ],
     products: [
         .library(name: "KippleDevice", targets: ["KippleDevice"]),
+        .library(name: "KippleFont", targets: ["KippleFont"]),
         .library(name: "KippleUI", targets: ["KippleUI"]),
     ],
     dependencies: [
         .package(url: "https://github.com/Nirma/UIDeviceComplete", from: "3.0.0"),
-        .package(url: "https://github.com/swift-kipple/Core", .upToNextMinor(from: "0.12.0")),
+        .package(url: "https://github.com/swift-kipple/Core", .upToNextMinor(from: "0.12.1")),
         .package(url: "https://github.com/swift-kipple/Tools", from: "0.3.0"),
     ],
     targets: [
@@ -29,10 +30,22 @@ let package = Package(
             ]
         ),
         .target(
+            name: "KippleFont",
+            dependencies: []
+        ),
+        .target(
             name: "KippleUI",
             dependencies: [
                 .product(name: "KippleCore", package: "Core"),
+                .target(name: "KippleFont"),
             ]
         ),
+        // Test Targets
+        .testTarget(
+            name: "KippleFontTests",
+            dependencies: [
+                .target(name: "KippleFont"),
+            ]
+        )
     ]
 )

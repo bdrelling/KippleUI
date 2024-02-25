@@ -45,6 +45,5 @@ struct SystemFontIterator_Previews: PreviewProvider {
             }
         }
         .padding()
-        .previewMatrix(.sizeThatFits)
     }
 }

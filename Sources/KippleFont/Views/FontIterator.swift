@@ -48,7 +48,6 @@ struct FontIterator_Previews: PreviewProvider {
             .padding()
             .frame(maxWidth: .infinity)
         }
-        .previewMatrix(.sizeThatFits)
     }
 }
 

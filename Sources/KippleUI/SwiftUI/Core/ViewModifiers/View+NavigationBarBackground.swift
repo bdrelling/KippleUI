@@ -1,7 +1,5 @@
 // Copyright © 2024 Brian Drelling. All rights reserved.
 
-#if os(iOS)
-
 import SwiftUI
 
 public struct NavigationBarBackground<Content>: View where Content: View {
@@ -32,6 +30,8 @@ public extension View {
 }
 
 // MARK: - Previews
+
+#if canImport(UIKit)
 
 struct NavigationBarBackground_Previews: PreviewProvider {
     private static let displayModes: [NavigationBarItem.TitleDisplayMode] = [

@@ -3,7 +3,6 @@
 import Foundation
 import SwiftUI
 
-// TODO: Migrate to Kipple
 public final class FontManager {
     // MARK: Shared Instance
 
@@ -14,11 +13,37 @@ public final class FontManager {
     /// An array of bundle identifiers whose fonts have been registered by this class.
     private var registeredBundleIdentifiers: [String] = []
 
+    public var availableFontFamilies: [String] {
+        Font.familyNames
+    }
+
+    public var availableFontFamiliesAndVariations: [String] {
+        Font.familyNamesAndVariations
+    }
+
+    static var availableFonts: [Font] {
+        Font.allFonts
+    }
+
+    static var availableFontsAndVariations: [Font] {
+        Font.allFontsAndVariations
+    }
+
     // MARK: Initializers
 
     private init() {}
 
     // MARK: Methods
+
+    public func printNames() {
+        Font.printNames()
+    }
+
+    public func printNamesAndVariations() {
+        Font.printNamesAndVariations()
+    }
+
+    // MARK: Methods - Registration
 
     public func registerFonts(in bundle: Bundle, fileExtensions: [String] = ["ttf", "otf"]) throws {
         guard try !self.hasRegistered(bundle.bundleIdentifier) else {
