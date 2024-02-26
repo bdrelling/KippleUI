@@ -97,6 +97,8 @@ public final class FontManager {
                 // https://developer.apple.com/documentation/swift/unmanaged/takeretainedvalue()
                 throw unwrappedError.takeRetainedValue() as Error
             }
+
+            // print("Registered font: \(fontName)")
         } catch {
             throw RegistrationError.unableToCreateFont(name: fontName, reason: error.localizedDescription)
         }

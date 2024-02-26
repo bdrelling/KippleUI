@@ -1,5 +1,6 @@
 // Copyright © 2024 Brian Drelling. All rights reserved.
 
+#warning("Deprecate this! Use FontIterator instead!")
 import SwiftUI
 
 /// Iterates through all standard system font types for easy reference.
