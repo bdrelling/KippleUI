@@ -6,7 +6,7 @@ import SwiftUI
 public extension View {
     @ViewBuilder
     func unevenCornerRadius(_ radii: RectangleCornerRadii, style: RoundedCornerStyle = .circular) -> some View {
-        self.clipShape(UnevenRoundedRectangle(cornerRadii: radii, style: style))
+        clipShape(UnevenRoundedRectangle(cornerRadii: radii, style: style))
     }
 
     @ViewBuilder

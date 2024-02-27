@@ -23,7 +23,7 @@ public extension LazyVGrid {
 
     init(
         columns: Int,
-        gridItemSize: GridItem.Size = .flexible(),
+        gridItemSize _: GridItem.Size = .flexible(),
         alignment: HorizontalAlignment = .center,
         spacing: CGFloat? = nil,
         horizontalSpacing: CGFloat,

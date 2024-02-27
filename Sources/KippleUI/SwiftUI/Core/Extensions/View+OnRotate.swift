@@ -1,4 +1,4 @@
-// Copyright © 2023 Brian Drelling. All rights reserved.
+// Copyright © 2024 Brian Drelling. All rights reserved.
 
 #if os(iOS)
 
@@ -25,7 +25,7 @@ public struct DeviceRotationViewModifier: ViewModifier {
 
 public extension View {
     func onDeviceRotate(perform action: @escaping (UIDeviceOrientation) -> Void) -> some View {
-        self.modifier(DeviceRotationViewModifier(action: action))
+        modifier(DeviceRotationViewModifier(action: action))
     }
 }
 

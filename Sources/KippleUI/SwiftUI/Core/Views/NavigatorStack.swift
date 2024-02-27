@@ -18,7 +18,7 @@ public struct NavigatorStack<Content>: View where Content: View {
         navigator: Navigator,
         @ViewBuilder content: @escaping (Navigator) -> Content
     ) {
-        self._navigator = .init(wrappedValue: navigator)
+        _navigator = .init(wrappedValue: navigator)
         self.content = content
     }
 
@@ -104,7 +104,7 @@ public extension Navigator {
 
 @available(iOS 17.0, macOS 14.0, tvOS 14.0, watchOS 10.0, *)
 public extension View {
-    func navigationDestination<N>(for value: N.Type) -> some View where N: Navigable {
+    func navigationDestination<N>(for _: N.Type) -> some View where N: Navigable {
         self.navigationDestination(for: N.self) { $0.view }
     }
 }

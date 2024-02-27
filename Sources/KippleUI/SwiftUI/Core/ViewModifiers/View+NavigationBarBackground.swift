@@ -25,7 +25,7 @@ public struct NavigationBarBackground<Content>: View where Content: View {
 
 public extension View {
     func withNavigationBarBackground<Content>(@ViewBuilder _ content: @escaping () -> Content) -> some View where Content: View {
-        self.overlay(NavigationBarBackground(content))
+        overlay(NavigationBarBackground(content))
     }
 }
 
@@ -40,7 +40,7 @@ struct NavigationBarBackground_Previews: PreviewProvider {
     ]
 
     static var previews: some View {
-        ForEach(self.displayModes, id: \.self) { displayMode in
+        ForEach(displayModes, id: \.self) { displayMode in
             NavigationView {
                 ZStack {
                     NavigationBarBackground {

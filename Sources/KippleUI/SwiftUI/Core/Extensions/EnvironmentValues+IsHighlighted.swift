@@ -17,6 +17,6 @@ public extension EnvironmentValues {
 
 public extension View {
     func highlighted(_ isHighlighted: Bool) -> some View {
-        self.environment(\.isHighlighted, isHighlighted)
+        environment(\.isHighlighted, isHighlighted)
     }
 }

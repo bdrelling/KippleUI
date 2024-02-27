@@ -29,7 +29,7 @@ public struct KipplePicker<Content, Value>: View where Content: View, Value: Equ
                         .padding(.top)
                     }
                     .onAppear {
-                        if let selectionID = self.selection?.id {
+                        if let selectionID = selection?.id {
                             reader.scrollTo(selectionID)
                         }
                     }
@@ -50,7 +50,7 @@ public struct KipplePicker<Content, Value>: View where Content: View, Value: Equ
         options: [Value],
         content: @escaping (Value) -> Content
     ) {
-        self._selection = selection
+        _selection = selection
         self.options = options
         self.content = content
     }
@@ -103,7 +103,7 @@ struct KipplePickerItem<Content, Value>: View where Content: View, Value: Equata
         @ViewBuilder _ content: @escaping () -> Content
     ) {
         self.value = value
-        self._selection = selection
+        _selection = selection
         self.content = content
     }
 }
@@ -119,7 +119,7 @@ struct PickerView_Previews: PreviewProvider {
         case yikes
 
         var id: RawValue {
-            self.rawValue
+            rawValue
         }
     }
 

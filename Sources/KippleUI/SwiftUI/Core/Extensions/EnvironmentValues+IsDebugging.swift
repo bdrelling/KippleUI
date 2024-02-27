@@ -17,6 +17,6 @@ public extension EnvironmentValues {
 
 public extension View {
     func isDebugging(_ isDebugging: Bool) -> some View {
-        self.environment(\.isDebugging, isDebugging)
+        environment(\.isDebugging, isDebugging)
     }
 }

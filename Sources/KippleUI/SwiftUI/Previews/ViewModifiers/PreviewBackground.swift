@@ -1,4 +1,4 @@
-// Copyright © 2023 Brian Drelling. All rights reserved.
+// Copyright © 2024 Brian Drelling. All rights reserved.
 
 import SwiftUI
 
@@ -14,7 +14,7 @@ public struct PreviewBackground: ViewModifier {
     }
 
     private func nextColor() -> Color {
-        guard let index = Self.colors.firstIndex(of: self.backgroundColor) else {
+        guard let index = Self.colors.firstIndex(of: backgroundColor) else {
             return Self.colors.first ?? self.backgroundColor
         }
 
@@ -43,7 +43,7 @@ public extension EnvironmentValues {
 
 public extension View {
     func previewBackground() -> some View {
-        self.modifier(PreviewBackground())
+        modifier(PreviewBackground())
     }
 }
 
@@ -53,7 +53,7 @@ struct PreviewBackground_Previews: PreviewProvider {
     private static let spacing: CGFloat = 20
 
     static var previews: some View {
-        GeometryReader { geometry in
+        GeometryReader { _ in
             ZStack {
                 HStack(spacing: Self.spacing) {
                     VStack(spacing: Self.spacing) {

@@ -22,10 +22,10 @@ private struct Example_BoundedCircle: View {
                             DragGesture()
                                 .onChanged { value in
                                     let currentLocation = value.location
-                                    let center = CGPoint(x: self.dragDiametr / 2, y: self.dragDiametr / 2)
+                                    let center = CGPoint(x: dragDiametr / 2, y: dragDiametr / 2)
                                     let distance = center.distance(to: currentLocation)
                                     if distance > self.dragDiametr / 2 {
-                                        let k = (self.dragDiametr / 2) / distance
+                                        let k = (dragDiametr / 2) / distance
                                         let newLocationX = (currentLocation.x - center.x) * k + center.x
                                         let newLocationY = (currentLocation.y - center.y) * k + center.y
                                         self.position = CGPoint(x: newLocationX, y: newLocationY)

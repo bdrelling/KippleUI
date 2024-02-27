@@ -4,8 +4,8 @@ import CoreGraphics
 
 public extension CGPoint {
     func clamped(to rect: CGRect) -> Self {
-        let clampedX = self.x.clamped(min: rect.minX, max: rect.width)
-        let clampedY = self.y.clamped(min: rect.minY, max: rect.height)
+        let clampedX = x.clamped(min: rect.minX, max: rect.width)
+        let clampedY = y.clamped(min: rect.minY, max: rect.height)
 
         return .init(x: clampedX, y: clampedY)
     }

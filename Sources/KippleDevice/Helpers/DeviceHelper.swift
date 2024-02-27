@@ -1,4 +1,4 @@
-// Copyright © 2022 Brian Drelling. All rights reserved.
+// Copyright © 2024 Brian Drelling. All rights reserved.
 
 import Foundation
 import KippleCore
@@ -24,42 +24,42 @@ public final class DeviceHelper: DeviceHelping {
 
     public static var deviceFamily: String {
         // TODO: This won't work for macOS, tvOS, etc. etc.
-        self.device.dc.deviceFamily.rawValue
+        device.dc.deviceFamily.rawValue
     }
 
     public static var deviceIdiom: UIUserInterfaceIdiom {
-        self.device.userInterfaceIdiom
+        device.userInterfaceIdiom
     }
 
     public static var deviceInfo: DeviceInfo {
         .init(
             appVersion: Bundle.main.bundleVersion,
             appBuildNumber: Bundle.main.bundleBuildNumber,
-            deviceFamily: self.deviceFamily,
-            deviceModel: self.deviceModel,
-            systemName: self.systemName,
-            systemVersion: self.systemVersion
+            deviceFamily: deviceFamily,
+            deviceModel: deviceModel,
+            systemName: systemName,
+            systemVersion: systemVersion
         )
     }
 
     public static var deviceIdiomName: String {
-        self.deviceIdiom.name
+        deviceIdiom.name
     }
 
     public static var deviceModel: String {
-        self.device.dc.commonDeviceName
+        device.dc.commonDeviceName
     }
 
     public static var systemName: String {
-        self.device.systemName
+        device.systemName
     }
 
     public static var systemVersionString: String {
-        self.device.systemVersion
+        device.systemVersion
     }
 
     public static var systemVersion: SemanticVersion {
-        .from(self.systemVersionString)
+        .from(systemVersionString)
     }
 
     private init() {}
@@ -103,10 +103,10 @@ public final class DeviceHelper: DeviceHelping {
         .init(
             appVersion: Bundle.main.bundleVersion,
             appBuildNumber: Bundle.main.bundleBuildNumber,
-            deviceFamily: self.deviceFamily,
-            deviceModel: self.deviceModel,
-            systemName: self.systemName,
-            systemVersion: self.systemVersion
+            deviceFamily: deviceFamily,
+            deviceModel: deviceModel,
+            systemName: systemName,
+            systemVersion: systemVersion
         )
     }
 

@@ -16,7 +16,7 @@ public enum PlatformSafeTitleDisplayMode {
 @available(watchOS, unavailable)
 @available(tvOS, unavailable)
 public extension View {
-    func navigationBarTitleDisplayMode(_ mode: PlatformSafeTitleDisplayMode) -> some View {
+    func navigationBarTitleDisplayMode(_: PlatformSafeTitleDisplayMode) -> some View {
         self
     }
 }

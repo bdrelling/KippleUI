@@ -39,7 +39,7 @@ struct SystemFontIterator_Previews: PreviewProvider {
                         .font(.caption)
                         .foregroundColor(.secondary)
 
-                    Text(self.pangram)
+                    Text(pangram)
                         .font(font)
                 }
                 .fixedSize(horizontal: false, vertical: true)

@@ -4,19 +4,19 @@ import CoreGraphics
 
 public extension CGSize {
     var center: CGPoint {
-        .init(x: self.width / 2, y: self.height / 2)
+        .init(x: width / 2, y: height / 2)
     }
 
     var isLandscape: Bool {
-        self.width > self.height
+        width > height
     }
 
     var isPortrait: Bool {
-        self.height > self.width
+        height > width
     }
 
     var isSquare: Bool {
-        self.width == self.height
+        width == height
     }
 
     static func * (lhs: Self, rhs: CGFloat) -> Self {

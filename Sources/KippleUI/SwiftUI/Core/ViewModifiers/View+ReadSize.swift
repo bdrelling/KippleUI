@@ -4,7 +4,7 @@ import SwiftUI
 
 public extension View {
     func readSize(_ onSizeChange: @escaping (CGSize) -> Void) -> some View {
-        self.overlay(
+        overlay(
             GeometryReader { geometry in
                 Color.clear
                     .preference(key: SizePreferenceKey.self, value: geometry.size)

@@ -1,4 +1,4 @@
-// Copyright © 2022 Brian Drelling. All rights reserved.
+// Copyright © 2024 Brian Drelling. All rights reserved.
 
 #if canImport(CoreMotion)
 

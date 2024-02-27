@@ -56,7 +56,7 @@ public struct ColorSquare: View {
     public var body: some View {
         self.color
             .overlay {
-                if let hex = self.color.hex {
+                if let hex = color.hex {
                     Text("#\(hex)")
                         .minimumScaleFactor(0.1)
                         .lineLimit(1)

@@ -12,12 +12,12 @@ public extension Font {
     }
 
     static var allFonts: [Font] {
-        self.familyNames
+        familyNames
             .compactMap { Font.custom($0, relativeTo: .body) }
     }
 
     static var allFontsAndVariations: [Font] {
-        self.familyNamesAndVariations
+        familyNamesAndVariations
             .compactMap { Font.custom($0, relativeTo: .body) }
     }
 
@@ -36,23 +36,23 @@ public extension Font {
 
 public extension UXFont {
     static var allFonts: [UXFont] {
-        self.familyNames
+        familyNames
             .sorted()
             .compactMap { .init(name: $0, relativeTo: .body) }
     }
 
     static var allFontsAndVariations: [UXFont] {
-        self.familyNamesAndVariations
+        familyNamesAndVariations
             .sorted()
             .compactMap { .init(name: $0, relativeTo: .body) }
     }
 
     static func printNames() {
-        self.familyNames.forEach { print($0) }
+        familyNames.forEach { print($0) }
     }
 
     static func printNamesAndVariations() {
-        self.familyNamesAndVariations.forEach { print($0) }
+        familyNamesAndVariations.forEach { print($0) }
     }
 }
 

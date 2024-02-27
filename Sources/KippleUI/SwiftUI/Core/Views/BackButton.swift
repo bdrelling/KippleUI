@@ -1,4 +1,4 @@
-// Copyright © 2023 Brian Drelling. All rights reserved.
+// Copyright © 2024 Brian Drelling. All rights reserved.
 
 import SwiftUI
 
@@ -49,7 +49,7 @@ public struct BackButtonPreviewer<Content>: View where Content: View {
     public let content: () -> Content
 
     public var body: some View {
-        NavigationStack(path: $path) {
+        NavigationStack(path: self.$path) {
             Color.black
                 .edgesIgnoringSafeArea(.all)
                 .overlay {
@@ -71,8 +71,7 @@ public struct BackButtonPreviewer<Content>: View where Content: View {
 @available(iOS 16, macOS 13, tvOS 16, watchOS 9, *)
 public extension View {
     func withBackButton<Content: View>(@ViewBuilder content: @escaping () -> Content) -> some View {
-        self
-            .navigationBarBackButtonHidden(true)
+        navigationBarBackButtonHidden(true)
             .toolbar {
                 #if os(macOS)
                 ToolbarItem(placement: .principal) {

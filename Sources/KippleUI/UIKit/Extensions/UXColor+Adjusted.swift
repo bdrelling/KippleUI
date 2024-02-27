@@ -1,4 +1,4 @@
-// Copyright © 2022 Brian Drelling. All rights reserved.
+// Copyright © 2024 Brian Drelling. All rights reserved.
 
 #if canImport(UIKit)
 
@@ -29,7 +29,7 @@ public extension UXColor {
         var blue: CGFloat = 0
         var alpha: CGFloat = 0
 
-        self.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
 
         return .init(
             red: min(red + percentage / 100, 1.0),

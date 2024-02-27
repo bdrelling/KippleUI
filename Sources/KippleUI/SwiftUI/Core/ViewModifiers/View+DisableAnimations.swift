@@ -5,7 +5,7 @@ import SwiftUI
 public extension View {
     @ViewBuilder
     func disableAnimations() -> some View {
-        self.transaction { transaction in
+        transaction { transaction in
             transaction.animation = nil
         }
     }

@@ -21,7 +21,7 @@ public struct DismissReader<Content>: View where Content: View {
 @available(watchOS, unavailable)
 public extension View {
     /// Adds a dismiss button to the toolbar.
-    func withNavigationBarDoneButton(if condition: Bool = true) -> some View {
+    func withNavigationBarDoneButton(if _: Bool = true) -> some View {
         DismissReader { dismiss in
             self.toolbar {
                 #if os(iOS)

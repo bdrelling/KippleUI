@@ -15,5 +15,5 @@ jobs:
     with:
       scheme: KippleUI-Package
       subcommand: build
-      platforms: iOS tvOS macOS watchOS
-      swift-versions: 5.5 5.6 5.7
+      platforms: iOS macOS tvOS watchOS visionOS
+      swift-versions: 5.7 5.8 5.9

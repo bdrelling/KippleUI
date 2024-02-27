@@ -24,6 +24,6 @@ public struct ViewDidLoadModifier: ViewModifier {
 
 public extension View {
     func onLoad(perform action: @escaping () -> Void) -> some View {
-        self.modifier(ViewDidLoadModifier(perform: action))
+        modifier(ViewDidLoadModifier(perform: action))
     }
 }

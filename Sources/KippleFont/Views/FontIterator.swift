@@ -49,7 +49,7 @@ struct FontIterator_Previews: PreviewProvider {
             color: .whiteOnBlack,
             textStyle: .body
         ) {
-            Text(self.pangram)
+            Text(pangram)
         }
     }
 }

@@ -1,4 +1,4 @@
-// Copyright © 2022 Brian Drelling. All rights reserved.
+// Copyright © 2024 Brian Drelling. All rights reserved.
 
 import SwiftUI
 
@@ -33,6 +33,6 @@ public extension EnvironmentValues {
 
 public extension View {
     func kipplePickerStyle(_ style: KipplePickerStyle) -> some View {
-        self.environment(\.kipplePickerStyle, style)
+        environment(\.kipplePickerStyle, style)
     }
 }

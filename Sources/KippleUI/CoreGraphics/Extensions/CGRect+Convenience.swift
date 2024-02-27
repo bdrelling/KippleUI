@@ -4,6 +4,6 @@ import CoreGraphics
 
 public extension CGRect {
     var center: CGPoint {
-        .init(x: self.midX, y: self.midY)
+        .init(x: midX, y: midY)
     }
 }

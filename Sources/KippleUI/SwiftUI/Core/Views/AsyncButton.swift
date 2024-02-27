@@ -1,4 +1,4 @@
-// Copyright © 2023 Brian Drelling. All rights reserved.
+// Copyright © 2024 Brian Drelling. All rights reserved.
 
 import SwiftUI
 
@@ -15,7 +15,7 @@ public struct AsyncButton<Label: View>: View {
 
     public var body: some View {
         Button(
-            role: role,
+            role: self.role,
             action: {
                 if self.options.contains(.disableButton) {
                     self.isDisabled = true
@@ -32,7 +32,7 @@ public struct AsyncButton<Label: View>: View {
                     }
 
                     // TODO: Handle error?
-                    try await action()
+                    try await self.action()
                     progressViewTask?.cancel()
 
                     self.isDisabled = false
@@ -49,7 +49,7 @@ public struct AsyncButton<Label: View>: View {
                 }
             }
         )
-        .disabled(isDisabled)
+        .disabled(self.isDisabled)
     }
 
     public init(
@@ -80,7 +80,7 @@ public extension AsyncButton where Label == Text {
     init(
         _ title: String,
         role: ButtonRole? = nil,
-        options: Set<AsyncButtonOption> = .allCases,
+        options _: Set<AsyncButtonOption> = .allCases,
         action: @escaping () async throws -> Void
     ) {
         self.init(role: role, action: action) {
@@ -94,7 +94,7 @@ public extension AsyncButton where Label == Image {
     init(
         systemImageName: String,
         role: ButtonRole? = nil,
-        options: Set<AsyncButtonOption> = .allCases,
+        options _: Set<AsyncButtonOption> = .allCases,
         action: @escaping () async throws -> Void
     ) {
         self.init(role: role, action: action) {

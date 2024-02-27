@@ -1,4 +1,4 @@
-// Copyright © 2022 Brian Drelling. All rights reserved.
+// Copyright © 2024 Brian Drelling. All rights reserved.
 
 import Foundation
 import SwiftUI
@@ -25,7 +25,7 @@ public struct PreviewMatrix: ViewModifier {
 
 public extension View {
     func previewMatrix(_ matrix: PreviewMatrix = .default) -> some View {
-        self.modifier(matrix)
+        modifier(matrix)
     }
 
     func previewDevice(_ type: PreviewDeviceType) -> some View {

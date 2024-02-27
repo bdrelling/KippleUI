@@ -1,4 +1,4 @@
-// Copyright © 2022 Brian Drelling. All rights reserved.
+// Copyright © 2024 Brian Drelling. All rights reserved.
 
 import SwiftUI
 
@@ -27,7 +27,7 @@ public enum ButtonState {
 
 public extension StateEnabledButtonStyle {
     func makeBody(configuration: ButtonStyle.Configuration) -> some View {
-        let state = self.state(for: configuration)
+        let state = state(for: configuration)
 
         return self.makeBody(label: configuration.label, state: state)
     }
@@ -35,13 +35,13 @@ public extension StateEnabledButtonStyle {
     func state(for configuration: Configuration) -> ButtonState {
         #if DEBUG
 
-        if let previewState = self.previewState {
+        if let previewState = previewState {
             return previewState
         }
 
         #endif
 
-        if !self.isEnabled {
+        if !isEnabled {
             return .disabled
         } else if configuration.isPressed {
             return .pressed

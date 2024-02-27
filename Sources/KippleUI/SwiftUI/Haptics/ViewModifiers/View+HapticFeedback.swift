@@ -12,7 +12,7 @@ public extension View {
     }
 
     func impactFeedbackOnTap(style: UIImpactFeedbackGenerator.FeedbackStyle = .light, isEnabled: Bool = true) -> some View {
-        self.onTapGesture {
+        onTapGesture {
             if isEnabled {
                 self.performHapticFeedback(style: style)
             }
@@ -20,7 +20,7 @@ public extension View {
     }
 
     func simultaneousImpactFeedbackOnTap(style: UIImpactFeedbackGenerator.FeedbackStyle = .light, isEnabled: Bool = true) -> some View {
-        self.simultaneousGesture(TapGesture().onEnded { _ in
+        simultaneousGesture(TapGesture().onEnded { _ in
             if isEnabled {
                 self.performHapticFeedback(style: style)
             }
@@ -28,7 +28,7 @@ public extension View {
     }
 
     func simultaneousSelectionFeedback(isEnabled: Bool = true) -> some View {
-        self.simultaneousGesture(TapGesture().onEnded { _ in
+        simultaneousGesture(TapGesture().onEnded { _ in
             if isEnabled {
                 UISelectionFeedbackGenerator().selectionChanged()
             }
@@ -48,17 +48,17 @@ public enum PlatformSafeFeedbackStyle {
 }
 
 public extension View {
-    func impactFeedbackOnTap(style: PlatformSafeFeedbackStyle = .light, isEnabled: Bool = true) -> some View {
+    func impactFeedbackOnTap(style _: PlatformSafeFeedbackStyle = .light, isEnabled _: Bool = true) -> some View {
         // do nothing -- haptic feedback is not supported on other platforms
         self
     }
 
-    func simultaneousImpactFeedbackOnTap(style: PlatformSafeFeedbackStyle = .light, isEnabled: Bool = true) -> some View {
+    func simultaneousImpactFeedbackOnTap(style _: PlatformSafeFeedbackStyle = .light, isEnabled _: Bool = true) -> some View {
         // do nothing -- haptic feedback is not supported on other platforms
         self
     }
 
-    func simultaneousSelectionFeedback(isEnabled: Bool = true) -> some View {
+    func simultaneousSelectionFeedback(isEnabled _: Bool = true) -> some View {
         // do nothing -- haptic feedback is not supported on other platforms
         self
     }

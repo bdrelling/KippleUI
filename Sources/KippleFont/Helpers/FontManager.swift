@@ -84,7 +84,8 @@ public final class FontManager {
         let fontName = url.lastPathComponent
 
         guard let fontDataProvider = CGDataProvider(url: url as CFURL),
-              let font = CGFont(fontDataProvider) else {
+              let font = CGFont(fontDataProvider)
+        else {
             throw RegistrationError.unableToCreateFont(name: fontName, reason: "Font at URL '\(url.absoluteString)' not found.")
         }
 

@@ -41,8 +41,8 @@ public extension Array where Element == UnitPoint {
 extension UnitPoint {
     func `in`(_ rect: CGRect) -> CGPoint {
         .init(
-            x: rect.width * self.x,
-            y: rect.height * self.y
+            x: rect.width * x,
+            y: rect.height * y
         )
     }
 }
