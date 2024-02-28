@@ -1,15 +1,17 @@
+// Copyright © 2024 Brian Drelling. All rights reserved.
+
 //// Copyright © 2024 Brian Drelling. All rights reserved.
 //
-//import CoreGraphics
-//import Foundation
-//import KippleCore
-//import SwiftUI
+// import CoreGraphics
+// import Foundation
+// import KippleCore
+// import SwiftUI
 //
-//#if canImport(UIKit)
-//import UIKit
-//#endif
+// #if canImport(UIKit)
+// import UIKit
+// #endif
 //
-//public extension Kipple {
+// public extension Kipple {
 //    // TODO: Update to include
 //    /// The current device type.
 //    static var deviceType: DeviceType {
@@ -36,13 +38,13 @@
 //        UIDevice.current.orientation
 //    }
 //    #endif
-//}
+// }
 //
-//public enum DeviceType {
+// public enum DeviceType {
 //    case unknown
 //    case phone
 //    case tablet
 //    case tv
 //    case mac
 //    case watch
-//}
+// }
