@@ -11,24 +11,15 @@ let package = Package(
         .watchOS(.v9),
     ],
     products: [
-        .library(name: "KippleDevice", targets: ["KippleDevice"]),
         .library(name: "KippleFont", targets: ["KippleFont"]),
         .library(name: "KippleUI", targets: ["KippleUI"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/Nirma/UIDeviceComplete", from: "3.0.0"),
-        .package(url: "https://github.com/swift-kipple/Core", revision: "20c722bb11823d72b3c346ca0fad2888c5af8adf"),
-        .package(url: "https://github.com/swift-kipple/Tools", revision: "4bc0d4cee521e5a7389d832b8fac45cdf4a867f2"),
+        .package(url: "https://github.com/swift-kipple/Core", .upToNextMinor(from: "0.13.2")),
+        .package(url: "https://github.com/swift-kipple/Tools", .upToNextMinor(from: "0.5.0")),
     ],
     targets: [
         // Product Targets
-        .target(
-            name: "KippleDevice",
-            dependencies: [
-                .product(name: "KippleCore", package: "Core"),
-                .product(name: "UIDeviceComplete", package: "UIDeviceComplete", condition: .when(platforms: [.iOS])),
-            ]
-        ),
         .target(
             name: "KippleFont",
             dependencies: []
@@ -36,7 +27,6 @@ let package = Package(
         .target(
             name: "KippleUI",
             dependencies: [
-                .product(name: "KippleCore", package: "Core"),
                 .target(name: "KippleFont"),
             ]
         ),
