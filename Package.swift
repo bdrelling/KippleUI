@@ -27,6 +27,7 @@ let package = Package(
         .target(
             name: "KippleUI",
             dependencies: [
+                .product(name: "KippleCore", package: "Core"),
                 .target(name: "KippleFont"),
             ]
         ),
