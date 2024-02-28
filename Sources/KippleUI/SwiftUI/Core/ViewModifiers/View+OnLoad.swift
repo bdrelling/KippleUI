@@ -2,6 +2,7 @@
 
 import SwiftUI
 
+/// A modifier that performs an action the first time that a `View` is initialized, _prior_ to the view appearing.
 public struct ViewDidLoadModifier: ViewModifier {
     @State private var didLoad = false
     private let action: () -> Void
@@ -23,6 +24,7 @@ public struct ViewDidLoadModifier: ViewModifier {
 // MARK: - Extensions
 
 public extension View {
+    /// Performs an action the first time that a `View` is initialized, _prior_ to the view appearing.
     func onLoad(perform action: @escaping () -> Void) -> some View {
         modifier(ViewDidLoadModifier(perform: action))
     }

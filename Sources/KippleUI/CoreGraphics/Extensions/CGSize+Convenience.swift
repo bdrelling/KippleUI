@@ -2,6 +2,7 @@
 
 import CoreGraphics
 
+// TODO: Write tests
 public extension CGSize {
     var center: CGPoint {
         .init(x: width / 2, y: height / 2)

@@ -1,7 +1,9 @@
 // Copyright © 2024 Brian Drelling. All rights reserved.
 
 import CoreGraphics
+import KippleCore
 
+// TODO: Write tests
 public extension CGPoint {
     func clamped(to rect: CGRect) -> Self {
         let clampedX = x.clamped(min: rect.minX, max: rect.width)

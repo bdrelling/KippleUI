@@ -2,6 +2,7 @@
 
 import SwiftUI
 
+// TODO: Create previews or delete
 public extension Color {
     func lighter(byPercentage percentage: CGFloat) -> Color {
         self.adjusted(byPercentage: abs(percentage))

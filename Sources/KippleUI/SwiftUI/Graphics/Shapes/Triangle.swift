@@ -20,11 +20,9 @@ public struct Triangle: Shape {
 // MARK: - Previews
 
 struct Triangle_Previews: PreviewProvider {
-    static let caption: String = "And here's a caption with some more fancy info, like '\(UUID().uuidString)'."
-
     static var previews: some View {
         Triangle()
             .fill(.blue)
-            .frame(width: 100, height: 100)
+            .aspectRatio(1, contentMode: .fit)
     }
 }
