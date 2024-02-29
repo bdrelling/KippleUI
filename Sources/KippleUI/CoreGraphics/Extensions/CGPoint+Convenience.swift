@@ -1,7 +1,7 @@
 // Copyright © 2024 Brian Drelling. All rights reserved.
 
 import CoreGraphics
-import KippleCore
+import KippleFoundation
 
 // TODO: Write tests
 public extension CGPoint {

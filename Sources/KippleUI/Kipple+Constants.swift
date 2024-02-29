@@ -4,7 +4,7 @@
 //
 // import CoreGraphics
 // import Foundation
-// import KippleCore
+// import KippleFoundation
 // import SwiftUI
 //
 // #if canImport(UIKit)
