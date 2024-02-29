@@ -50,12 +50,18 @@ public enum PreviewDeviceType: String {
     case iPhone13ProMax = "iPhone 13 Pro Max"
     // Temporarily disabled as it's not working in Xcode 13.4.1 by default.
     case iPhoneSEGen3 = "iPhone SE (3rd generation)"
-
+    
     // iOS 16 (2022)
     case iPhone14 = "iPhone 14"
     case iPhone14Plus = "iPhone 14 Plus"
     case iPhone14Pro = "iPhone 14 Pro"
     case iPhone14ProMax = "iPhone 14 Pro Max"
+    
+    // iOS 17 (2023)
+    case iPhone15 = "iPhone 15"
+    case iPhone15Plus = "iPhone 15 Plus"
+    case iPhone15Pro = "iPhone 15 Pro"
+    case iPhone15ProMax = "iPhone 15 Pro Max"
 
     // MARK: iPads
 
