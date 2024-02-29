@@ -1,7 +1,8 @@
 # KippleUI
 
-[![CI Status](https://github.com/bdrelling/KippleUI/actions/workflows/tests.yml/badge.svg)](https://github.com/bdrelling/KippleUI/actions/workflows/tests.yml)
 [![Latest Release](https://img.shields.io/github/v/tag/bdrelling/KippleUI?color=blue&label=)](https://github.com/bdrelling/KippleUI/tags)
+[![CI Status](https://github.com/bdrelling/KippleUI/actions/workflows/tests.yml/badge.svg)](https://github.com/bdrelling/KippleUI/actions/workflows/tests.yml)
+[![Code Coverage](https://img.shields.io/codecov/c/github/bdrelling/KippleUI)](https://codecov.io/gh/bdrelling/KippleUI)
 [![Swift Compatibility](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fbdrelling%2FKippleUI%2Fbadge%3Ftype%3Dswift-versions&label=)](https://swiftpackageindex.com/bdrelling/KippleUI)
 [![Platform Compatibility](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fbdrelling%2FKippleUI%2Fbadge%3Ftype%3Dplatforms&label=)](https://swiftpackageindex.com/bdrelling/KippleUI)
 [![License](https://img.shields.io/github/license/bdrelling/KippleUI?label=)](https://github.com/bdrelling/KippleUI/blob/main/LICENSE)
