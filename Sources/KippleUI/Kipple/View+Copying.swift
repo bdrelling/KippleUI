@@ -8,7 +8,12 @@ private struct CopyingModifier: ViewModifier {
     @State private var isShowingPopover = false
 
     private let text: String
+    
+    #if canImport(UIKit)
     private let backgroundColor: Color = .init(uiColor: .secondarySystemBackground)
+    #else
+    private let backgroundColor: Color = .init(nsColor: .windowBackgroundColor)
+    #endif
 
     func body(content: Content) -> some View {
         content

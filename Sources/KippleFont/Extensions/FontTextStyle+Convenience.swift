@@ -12,7 +12,7 @@ public extension Font.TextStyle {
     }
 }
 
-// MARK: - Platform Convenience
+// MARK: - UIKit / AppKit Extensions
 
 #if canImport(UIKit)
 

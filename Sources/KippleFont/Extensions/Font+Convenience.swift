@@ -34,6 +34,8 @@ public extension Font {
     }
 }
 
+// MARK: - UIKit / AppKit Extensions
+
 public extension UXFont {
     static var allFonts: [UXFont] {
         familyNames

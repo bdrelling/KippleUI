@@ -3,7 +3,7 @@
 import SwiftUI
 
 public struct Hexagon: Shape {
-    public enum Orientation {
+    public enum Orientation: Sendable {
         /// Flat sides on top and bottom edges.
         case horizontal
 

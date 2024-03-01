@@ -74,7 +74,7 @@ public struct AnimatableShape: Shape {
 
 public extension AnimatableShape {
     /// Defines the various styles for animation.
-    enum Style {
+    enum Style: Sendable {
         /// Draws the shape's path once from start to end.
         ///
         /// `progress` between `0...1` shows the line being drawn, with `1` being fully visible.

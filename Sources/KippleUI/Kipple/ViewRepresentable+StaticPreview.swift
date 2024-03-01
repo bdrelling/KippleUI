@@ -1,5 +1,7 @@
 // Copyright © 2024 Brian Drelling. All rights reserved.
 
+#if canImport(UIKit)
+
 import SwiftUI
 
 private struct UIViewPreview: UIViewRepresentable {
@@ -24,3 +26,32 @@ public extension UIView {
         UIViewPreview(self)
     }
 }
+
+#elseif canImport(AppKit)
+
+import SwiftUI
+
+private struct UIViewPreview: NSViewRepresentable {
+    private let view: NSView
+
+    init(_ view: NSView) {
+        self.view = view
+        self.view.translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    func makeNSView(context: Context) -> NSView {
+        self.view
+    }
+
+    func updateNSView(_ uiView: NSView, context: Context) {}
+}
+
+// MARK: - Extensions
+
+public extension NSView {
+    func staticPreview() -> some View {
+        UIViewPreview(self)
+    }
+}
+
+#endif

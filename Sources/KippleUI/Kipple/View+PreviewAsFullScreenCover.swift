@@ -1,5 +1,7 @@
 // Copyright © 2024 Brian Drelling. All rights reserved.
 
+#if os(iOS) || os(tvOS) || os(watchOS)
+
 import SwiftUI
 
 /// Mocks a `View` being presented as `fullScreenCover` for Xcode Previews.
@@ -41,3 +43,5 @@ public extension View {
         }
     }
 }
+
+#endif

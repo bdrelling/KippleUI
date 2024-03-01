@@ -16,16 +16,6 @@ public extension Font {
     }
 }
 
-public extension UXFont {
-    static func custom(_ name: String, relativeTo textStyle: UXFont.TextStyle) -> UXFont {
-        .init(name: name, relativeTo: textStyle) ?? .systemFont(ofSize: textStyle.preferredSize)
-    }
-
-    static func custom(_ name: RegisteredFontName, relativeTo textStyle: UXFont.TextStyle) -> UXFont {
-        self.custom("\(name.value)", relativeTo: textStyle)
-    }
-}
-
 // MARK: - Supporting Types
 
 public struct RegisteredFontName {
@@ -37,5 +27,17 @@ public struct RegisteredFontName {
 extension RegisteredFontName: ExpressibleByStringLiteral {
     public init(stringLiteral value: StringLiteralType) {
         self.init(value: value)
+    }
+}
+
+// MARK: - UIKit / AppKit Extensions
+
+public extension UXFont {
+    static func custom(_ name: String, relativeTo textStyle: UXFont.TextStyle) -> UXFont {
+        .init(name: name, relativeTo: textStyle) ?? .systemFont(ofSize: textStyle.preferredSize)
+    }
+
+    static func custom(_ name: RegisteredFontName, relativeTo textStyle: UXFont.TextStyle) -> UXFont {
+        self.custom("\(name.value)", relativeTo: textStyle)
     }
 }
