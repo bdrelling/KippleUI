@@ -7,7 +7,7 @@ public extension View {
     /// When the `View` disappears, the screen is able to dim again.
     @ViewBuilder
     func preventScreenDimming() -> some View {
-        #if canImport(UIKit)
+        #if canImport(UIKit) && (os(iOS) || os(tvOS) || os(visionOS))
         self.onAppear {
             UIApplication.shared.isIdleTimerDisabled = true
         }

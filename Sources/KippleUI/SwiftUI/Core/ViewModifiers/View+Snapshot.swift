@@ -1,15 +1,15 @@
 // Copyright © 2024 Brian Drelling. All rights reserved.
 
-#if canImport(UIKit)
-
 import SwiftUI
+
+#if canImport(UIKit) && (os(iOS) || os(tvOS))
 
 public extension View {
     func snapshot() -> Image {
         .init(uiImage: self.uiImage())
     }
 
-    func uiImage() -> UIImage {
+    private func uiImage() -> UIImage {
         let controller = UIHostingController(rootView: self)
         let view = controller.view
 
@@ -25,6 +25,17 @@ public extension View {
     }
 }
 
+#else
+
+public extension View {
+    func snapshot() -> Image {
+        print("WARNING: View.snapshot() is only available on iOS and tvOS.")
+        return .init(systemName: "photo")
+    }
+}
+
+#endif
+
 // MARK: - Previews
 
 struct ViewSnapshot_Previews: PreviewProvider {
@@ -37,5 +48,3 @@ struct ViewSnapshot_Previews: PreviewProvider {
             .snapshot()
     }
 }
-
-#endif

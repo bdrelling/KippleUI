@@ -2,6 +2,7 @@
 
 import SwiftUI
 
+@available(watchOS, unavailable)
 public struct Modal<Content>: View where Content: View {
     private let content: () -> Content
 
@@ -16,7 +17,11 @@ public struct Modal<Content>: View where Content: View {
             self.content()
                 .withNavigationBarBackground {
                     Rectangle()
+                    #if os(watchOS)
+                        .fill(.background)
+                    #else
                         .fill(.regularMaterial)
+                    #endif
                 }
 //                .navigationBarTitleDisplayMode(.inline)
                 .withNavigationBarDoneButton()
@@ -35,6 +40,7 @@ public struct Modal<Content>: View where Content: View {
 
 // MARK: - Extensions
 
+@available(watchOS, unavailable)
 public extension View {
     func inModal() -> some View {
         Modal {

@@ -8,7 +8,7 @@ public struct FontIterator<Content>: View where Content: View {
 
     public var body: some View {
         ForEach(self.fonts, id: \.self) { font in
-            self.content(Font(font), font.familyName ?? "Unknown")
+            self.content(Font(font), font.safeFamilyName)
         }
     }
 

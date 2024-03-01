@@ -68,7 +68,8 @@ public struct BackButtonPreviewer<Content>: View where Content: View {
 
 // MARK: - Extensions
 
-@available(iOS 15, macOS 12, tvOS 15, watchOS 8, *)
+@available(iOS 16, macOS 13, tvOS 16, watchOS 9, *)
+@available(watchOS, unavailable)
 public extension View {
     func withBackButton<Content: View>(@ViewBuilder content: @escaping () -> Content) -> some View {
         navigationBarBackButtonHidden(true)
@@ -89,6 +90,7 @@ public extension View {
 // MARK: - Previews
 
 @available(iOS 15, macOS 12, tvOS 15, watchOS 8, *)
+@available(watchOS, unavailable)
 struct BackButton_Previews: PreviewProvider {
     static var previews: some View {
         BackButtonPreviewer {

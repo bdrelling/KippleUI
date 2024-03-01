@@ -1,5 +1,7 @@
 // Copyright © 2024 Brian Drelling. All rights reserved.
 
+#if canImport(CoreHaptics)
+
 import Combine
 import CoreHaptics
 
@@ -127,3 +129,5 @@ public extension CHHapticEvent {
         )
     }
 }
+
+#endif

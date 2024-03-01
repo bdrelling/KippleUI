@@ -9,10 +9,13 @@ private struct CopyingModifier: ViewModifier {
 
     private let text: String
     
-    #if canImport(UIKit)
+    #if os(iOS)
     private let backgroundColor: Color = .init(uiColor: .secondarySystemBackground)
-    #else
+    #elseif os(macOS)
     private let backgroundColor: Color = .init(nsColor: .windowBackgroundColor)
+    #else
+    #warning("backgroundColor is not defined on tvOS and watchOS!")
+    private let backgroundColor: Color = .init(uiColor: .clear)
     #endif
 
     func body(content: Content) -> some View {

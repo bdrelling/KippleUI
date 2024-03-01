@@ -1,6 +1,6 @@
 // Copyright © 2024 Brian Drelling. All rights reserved.
 
-#if canImport(UIKit)
+#if os(iOS) || os(visionOS)
 
 import UIKit
 
@@ -20,6 +20,14 @@ public extension String {
         let pasteboard: NSPasteboard = .general
         pasteboard.clearContents()
         pasteboard.setString(self, forType: .string)
+    }
+}
+
+#else
+
+public extension String {
+    func copyToClipboard() {
+        print("WARNING: String.copyToClipboard is only available on iOS, macOS, and visionOS.")
     }
 }
 

@@ -34,10 +34,16 @@ public extension View {
 #if canImport(UIKit)
 
 struct NavigationBarBackground_Previews: PreviewProvider {
+    #if os(iOS)
     private static let displayModes: [NavigationBarItem.TitleDisplayMode] = [
         .inline,
         .large,
     ]
+    #else
+    private static let displayModes: [NavigationBarItem.TitleDisplayMode] = [
+        .inline,
+    ]
+    #endif
 
     static var previews: some View {
         ForEach(displayModes, id: \.self) { displayMode in

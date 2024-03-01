@@ -2,8 +2,7 @@
 
 import SwiftUI
 
-#if os(macOS)
-
+#if os(macOS) || os(tvOS) || os(watchOS)
 public enum PlatformSafeTitleDisplayMode {
     case automatic
     case inline
@@ -11,13 +10,23 @@ public enum PlatformSafeTitleDisplayMode {
     @available(tvOS, unavailable)
     case large
 }
+#endif
 
-@available(iOS, unavailable)
-@available(watchOS, unavailable)
-@available(tvOS, unavailable)
+#if os(macOS)
+
 public extension View {
     func navigationBarTitleDisplayMode(_: PlatformSafeTitleDisplayMode) -> some View {
         self
+    }
+}
+
+#endif
+
+#if os(tvOS) || os(watchOS)
+
+extension View {
+    public func navigationBarTitle(_ titleKey: LocalizedStringKey, displayMode: NavigationBarItem.TitleDisplayMode) -> some View {
+        self.navigationTitle(titleKey)
     }
 }
 
