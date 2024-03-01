@@ -15,7 +15,7 @@ let package = Package(
         .library(name: "KippleUI", targets: ["KippleUI"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/bdrelling/Kipple", revision: "7adb2ccc7b330e015cce810fc8d8e76670aa5404"),
+        .package(url: "https://github.com/bdrelling/Kipple", .upToNextMinor(from: "0.14.0")),
         .package(url: "https://github.com/bdrelling/KippleTools", .upToNextMinor(from: "0.5.0")),
     ],
     targets: [

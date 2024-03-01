@@ -21,7 +21,6 @@ A collection of common SwiftUI and UIKit utilities.
   - [Dependencies](#dependencies)
 - [Kipple Libraries](#kipple-libraries)
 - [Installation](#installation)
-- [Maintenance](#maintenance)
 - [Compatibility](#compatibility)
 - [Stability](#stability)
 - [Contributing](#contributing)
@@ -60,6 +59,9 @@ See [Installation](https://github.com/bdrelling/Kipple#installation).
 See [Compatibility](https://github.com/bdrelling/Kipple#compatibility).
 
 ## Stability
+
+[![CI Status](https://github.com/bdrelling/KippleUI/actions/workflows/tests.yml/badge.svg)](https://github.com/bdrelling/KippleUI/actions/workflows/tests.yml)
+[![Code Coverage](https://img.shields.io/codecov/c/github/bdrelling/KippleUI)](https://codecov.io/gh/bdrelling/KippleUI)
 
 See [Stability](https://github.com/bdrelling/Kipple#stability).
 
