@@ -82,9 +82,10 @@ public struct PointedStar: Shape {
 }
 
 // MARK: - Previews
-
-#Preview {
-    PointedStar()
-        .fill(.red)
-        .aspectRatio(contentMode: .fit)
+struct Star_Previews: PreviewProvider {
+    static var previews: some View {
+        PointedStar()
+            .fill(.red)
+            .aspectRatio(contentMode: .fit)
+    }
 }

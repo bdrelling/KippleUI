@@ -40,8 +40,10 @@ public struct Polygon: Shape {
 
 // MARK: - Previews
 
-#Preview {
-    Polygon(sides: 10)
-        .fill(.red)
-        .aspectRatio(contentMode: .fit)
+struct Polygon_Previews: PreviewProvider {
+    static var previews: some View {
+        Polygon(sides: 10)
+            .fill(.red)
+            .aspectRatio(contentMode: .fit)
+    }
 }

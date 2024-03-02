@@ -30,14 +30,16 @@ public struct Hexagon: Shape {
 
 // MARK: - Previews
 
-#Preview {
-    VStack {
-        Hexagon(orientation: .horizontal)
-            .fill(.red)
-            .aspectRatio(contentMode: .fit)
-
-        Hexagon(orientation: .vertical)
-            .fill(.red)
-            .aspectRatio(contentMode: .fit)
+struct Hexagon_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            Hexagon(orientation: .horizontal)
+                .fill(.red)
+                .aspectRatio(contentMode: .fit)
+            
+            Hexagon(orientation: .vertical)
+                .fill(.red)
+                .aspectRatio(contentMode: .fit)
+        }
     }
 }

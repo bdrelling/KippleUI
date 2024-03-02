@@ -94,14 +94,16 @@ public extension Array where Element == ColorPair {
 
 // MARK: - Previews
 
-#Preview {
-    FontTester(
-        columns: 2,
-        colors: .default + [
-            .init(foreground: .white, background: .blue),
-            .init(foreground: .blue, background: .white),
-        ]
-    ) {
-        Text("Lorem ipsum")
+struct FontTester_Previews: PreviewProvider {
+    static var previews: some View {
+        FontTester(
+            columns: 2,
+            colors: .default + [
+                .init(foreground: .white, background: .blue),
+                .init(foreground: .blue, background: .white),
+            ]
+        ) {
+            Text("Lorem ipsum")
+        }
     }
 }

@@ -49,15 +49,17 @@ extension UnitPoint {
 
 // MARK: - Previews
 
-#Preview {
-    VStack {
-        Quadrilateral()
-            .fill(.red)
-            .aspectRatio(contentMode: .fit)
-
-        Quadrilateral(points: [.topLeading, .top, .bottomTrailing, .bottomLeading])
-            .fill(.red)
-            .aspectRatio(contentMode: .fit)
+struct Quadrilateral_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            Quadrilateral()
+                .fill(.red)
+                .aspectRatio(contentMode: .fit)
+            
+            Quadrilateral(points: [.topLeading, .top, .bottomTrailing, .bottomLeading])
+                .fill(.red)
+                .aspectRatio(contentMode: .fit)
+        }
+        .padding()
     }
-    .padding()
 }

@@ -11,17 +11,19 @@ public extension View {
 
 // MARK: - Previews
 
-#Preview {
-    Color.blue
-        .modify { view in
-            #if os(iOS)
-            view.overlay {
-                Text("iOS")
+struct View_Modify_Previews: PreviewProvider {
+    static var previews: some View {
+        Color.blue
+            .modify { view in
+                #if os(iOS)
+                view.overlay {
+                    Text("iOS")
+                }
+                #else
+                view.overlay {
+                    Text("Not iOS!")
+                }
+                #endif
             }
-            #else
-            view.overlay {
-                Text("Not iOS!")
-            }
-            #endif
-        }
+    }
 }
