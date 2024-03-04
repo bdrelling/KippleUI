@@ -28,18 +28,27 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/bdrelling/Kipple", .upToNextMinor(from: "0.14.0")),
         .package(url: "https://github.com/bdrelling/KippleTools", .upToNextMinor(from: "0.5.0")),
+        .package(url: "https://github.com/twostraws/Inferno", revision: "ca1ec01"),
     ],
     targets: [
         // Product Targets (without Dependencies)
         .target(name: .kippleColors),
         .target(name: .kippleFonts),
-        .target(name: .kippleShaders),
         // Product Targets (with Dependencies)
         .target(
             name: .kippleUI,
             dependencies: [
                 .product(name: "KippleFoundation", package: "Kipple"),
             ] + allModulesAsDependencies
+        ),
+        .target(
+            name: .kippleShaders,
+            dependencies: [
+                .product(name: "Inferno", package: "Inferno"),
+            ],
+            resources: [
+                .process("Shaders"),
+            ]
         ),
         .target(
             name: .kippleShapes,
@@ -49,6 +58,7 @@ let package = Package(
         ),
         // Test Targets
         .kippleTestTarget(name: .kippleFonts),
+        .kippleTestTarget(name: .kippleShaders),
     ]
 )
 
