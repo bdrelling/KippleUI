@@ -1,10 +1,7 @@
 // Copyright © 2024 Brian Drelling. All rights reserved.
 
-#if swift(>=5.9)
-
 import SwiftUI
 
-@available(iOS 17, macOS 14, tvOS 17, watchOS 10, *)
 private struct StormView: View {
     @State private var storm = Storm()
     let rainColor = Color(red: 0.25, green: 0.5, blue: 0.75)
@@ -33,7 +30,6 @@ private struct Raindrop: Hashable, Equatable {
     var speed: Double
 }
 
-@available(iOS 17, macOS 14, tvOS 17, watchOS 10, *)
 @Observable
 private class Storm {
     var drops = Set<Raindrop>()
@@ -46,11 +42,8 @@ private class Storm {
 
 // MARK: - Previews
 
-@available(iOS 17, macOS 14, tvOS 17, watchOS 10, *)
 struct StormView_Previews: PreviewProvider {
     static var previews: some View {
         StormView()
     }
 }
-
-#endif

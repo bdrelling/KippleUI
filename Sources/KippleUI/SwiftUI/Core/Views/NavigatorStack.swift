@@ -1,10 +1,7 @@
 // Copyright © 2024 Brian Drelling. All rights reserved.
 
-#if swift(>=5.9)
-
 import SwiftUI
 
-@available(iOS 17, macOS 14, tvOS 17, watchOS 10, *)
 public struct NavigatorStack<Content>: View where Content: View {
     @Bindable private var navigator: Navigator
     private let content: (Navigator) -> Content
@@ -48,7 +45,6 @@ public struct NavigatorStack<Content>: View where Content: View {
 
 // MARK: - Supporting Types
 
-@available(iOS 17, macOS 14, tvOS 17, watchOS 10, *)
 @Observable
 public final class Navigator {
     public var path: NavigationPath
@@ -76,12 +72,10 @@ public final class Navigator {
     }
 }
 
-@available(iOS 17, macOS 14, tvOS 17, watchOS 10, *)
 private struct NavigatorKey: EnvironmentKey {
     static let defaultValue: Navigator = .init()
 }
 
-@available(iOS 17, macOS 14, tvOS 17, watchOS 10, *)
 public extension EnvironmentValues {
     var navigator: Navigator {
         get { self[NavigatorKey.self] }
@@ -89,7 +83,6 @@ public extension EnvironmentValues {
     }
 }
 
-@available(iOS 17, macOS 14, tvOS 17, watchOS 10, *)
 public protocol Navigable: Hashable {
     associatedtype View: SwiftUI.View
     @ViewBuilder var view: View { get }
@@ -97,18 +90,14 @@ public protocol Navigable: Hashable {
 
 // MARK: - Extensions
 
-@available(iOS 17, macOS 14, tvOS 17, watchOS 10, *)
 public extension Navigator {
     convenience init<PathComponent>(path: [PathComponent]) where PathComponent: Hashable {
         self.init(path: .init(path))
     }
 }
 
-@available(iOS 17, macOS 14, tvOS 17, watchOS 10, *)
 public extension View {
     func navigationDestination<N>(for _: N.Type) -> some View where N: Navigable {
         self.navigationDestination(for: N.self) { $0.view }
     }
 }
-
-#endif

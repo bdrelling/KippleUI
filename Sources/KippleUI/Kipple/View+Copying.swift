@@ -45,7 +45,7 @@ private struct CopyingModifier: ViewModifier {
                     self.isShowingPopover = true
                 }
             }
-            .onChange(of: self.isShowingPopover) { isPresented in
+            .onChange(of: self.isShowingPopover) { _, isPresented in
                 if isPresented {
                     DispatchQueue.main.asyncAfter(deadline: .now() + Self.popoverVisibilityDuration) {
                         withAnimation(.spring()) {

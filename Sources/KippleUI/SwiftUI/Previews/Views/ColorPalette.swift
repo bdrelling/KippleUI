@@ -2,7 +2,6 @@
 
 import SwiftUI
 
-@available(iOS 16, macOS 13, tvOS 16, watchOS 9, *)
 public struct ColorPalette: View {
     private let spacing: CGFloat
     private let colors: [ColorSet]
@@ -73,7 +72,6 @@ public struct ColorSquare: View {
 
 // MARK: - Previews
 
-@available(iOS 16, macOS 13, tvOS 16, watchOS 9, *)
 struct ColorPalette_Previews: PreviewProvider {
     static var previews: some View {
         ColorPalette(spacing: 4, colors: [

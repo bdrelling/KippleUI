@@ -3,7 +3,6 @@
 import SwiftUI
 
 /// Modified from: https://swiftbysundell.com/articles/building-an-async-swiftui-button/
-@available(iOS 15, macOS 12, tvOS 15, watchOS 8, *)
 public struct AsyncButton<Label: View>: View {
     private var role: ButtonRole?
     private var action: () async throws -> Void
@@ -67,7 +66,6 @@ public struct AsyncButton<Label: View>: View {
 
 // MARK: - Supporting Types
 
-@available(iOS 15, macOS 12, tvOS 15, watchOS 8, *)
 public enum AsyncButtonOption: CaseIterable {
     case disableButton
     case showProgressView
@@ -75,7 +73,6 @@ public enum AsyncButtonOption: CaseIterable {
 
 // MARK: - Extensions
 
-@available(iOS 15, macOS 12, tvOS 15, watchOS 8, *)
 public extension AsyncButton where Label == Text {
     init(
         _ title: String,
@@ -89,7 +86,6 @@ public extension AsyncButton where Label == Text {
     }
 }
 
-@available(iOS 15, macOS 12, tvOS 15, watchOS 8, *)
 public extension AsyncButton where Label == Image {
     init(
         systemImageName: String,
@@ -103,7 +99,6 @@ public extension AsyncButton where Label == Image {
     }
 }
 
-@available(iOS 15, macOS 12, tvOS 15, watchOS 8, *)
 public extension Set where Element == AsyncButtonOption {
     static var allCases: Self {
         .init(Element.allCases)

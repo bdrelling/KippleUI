@@ -1,4 +1,4 @@
-// swift-tools-version: 5.7
+// swift-tools-version: 5.9
 
 import PackageDescription
 
@@ -19,10 +19,10 @@ let allModulesAsDependencies = allModules.map(Target.Dependency.init)
 let package = Package(
     name: "KippleUI",
     platforms: [
-        .iOS(.v16),
-        .macOS(.v13),
-        .tvOS(.v16),
-        .watchOS(.v9),
+        .iOS(.v17),
+        .macOS(.v14),
+        .tvOS(.v17),
+        .watchOS(.v10),
     ],
     products: [.library(name: .kippleUI, targets: [.kippleUI])] + allModulesAsProducts,
     dependencies: [
