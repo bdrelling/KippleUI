@@ -56,7 +56,10 @@ See [Installation](https://github.com/bdrelling/Kipple#installation).
 [![Swift Compatibility](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fbdrelling%2FKippleNetworking%2Fbadge%3Ftype%3Dswift-versions&label=)](https://swiftpackageindex.com/bdrelling/KippleNetworking)
 [![Platform Compatibility](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fbdrelling%2FKippleNetworking%2Fbadge%3Ftype%3Dplatforms&label=)](https://swiftpackageindex.com/bdrelling/KippleNetworking)
 
-See [Compatibility](https://github.com/bdrelling/Kipple#compatibility).
+> [!Note]
+> Because of SwiftUI's major leap forward with `@Observable` in iOS 17 / Swift 5.9, `KippleUI`'s minimum version is 5.9 instead of 5.7.
+
+See [Compatibility](https://github.com/bdrelling/Kipple#compatibility) for more information.
 
 ## Stability
 
