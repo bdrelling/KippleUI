@@ -50,42 +50,12 @@ extension View {
 
 // MARK: - Previews
 
-private struct Example: View {
-    @State private var hasLoaded: Bool = false
-    
-    var body: some View {
-        Group {
-            if hasLoaded {
-                Image(systemName: "photo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-//                    .aqua()
-                    .pixellate()
-            } else {
-                Color.purple
-            }
-        }.onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                hasLoaded = true
-            }
-        }
-    }
-    
-    init() {
-        try? KippleShaderLibrary().initialize()
-    }
-}
-
 #Preview {
-//    Image(systemName: "photo")
-//        .resizable()
-//        .aspectRatio(contentMode: .fit)
+    Image(systemName: "photo")
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+        .pixellate()
 //        .aqua()
-    Example()
-//        .pixellate()
         .padding(64)
         .background(.yellow)
-//        .onAppear {
-//            try? KippleShaderLibrary().initialize()
-//        }
 }
