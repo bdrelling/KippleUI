@@ -16,5 +16,4 @@ jobs:
     with:
       scheme: KippleUI-Package
       platforms: iOS macOS tvOS watchOS
-      swift-versions: 5.9
       code-coverage: true

@@ -1,5 +1,7 @@
 // Copyright © 2024 Brian Drelling. All rights reserved.
 
+#if swift(>=5.9)
+
 import SwiftUI
 
 @available(iOS 17, macOS 14, tvOS 17, watchOS 10, *)
@@ -108,3 +110,5 @@ public extension View {
         self.navigationDestination(for: N.self) { $0.view }
     }
 }
+
+#endif
