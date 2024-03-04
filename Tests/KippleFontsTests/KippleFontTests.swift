@@ -1,10 +1,10 @@
 // Copyright © 2024 Brian Drelling. All rights reserved.
 
-@testable import KippleFont
+@testable import KippleFonts
 import SwiftUI
 import XCTest
 
-final class KippleFontTests: XCTestCase {
+final class KippleFontsTests: XCTestCase {
     func testAvailableFontFamilies() {
         XCTAssertGreaterThan(Font.allFonts.count, 0)
         XCTAssertGreaterThan(FontManager.shared.availableFontFamilies.count, 0)

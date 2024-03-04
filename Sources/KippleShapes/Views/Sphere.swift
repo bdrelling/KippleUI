@@ -1,5 +1,6 @@
 // Copyright © 2024 Brian Drelling. All rights reserved.
 
+@_implementationOnly import KippleColors
 import SwiftUI
 
 public struct Sphere: View {

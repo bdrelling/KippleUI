@@ -4,4 +4,7 @@
 //
 // NOTE: APIs with the _ prefix are considered to be unfinalized, so the signature of the attribute is subject to change.
 
-@_exported import KippleFont
+@_exported import KippleColors
+@_exported import KippleFonts
+@_exported import KippleShaders
+@_exported import KippleShapes

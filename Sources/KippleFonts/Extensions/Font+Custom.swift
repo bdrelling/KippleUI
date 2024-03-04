@@ -9,9 +9,9 @@ public extension Font {
 
     static func custom(_ name: RegisteredFontName, size: CGFloat? = nil, relativeTo style: TextStyle = .body) -> Self {
         if let size {
-            .custom(name.value, size: size, relativeTo: style)
+            return .custom(name.value, size: size, relativeTo: style)
         } else {
-            .custom(name.value, relativeTo: style)
+            return .custom(name.value, relativeTo: style)
         }
     }
 }

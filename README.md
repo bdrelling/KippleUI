@@ -30,7 +30,7 @@ A collection of common SwiftUI and UIKit utilities.
 
 ### Modules
 
-- [KippleFont](/Sources/KippleFont) — Convenience functionality for `Font`, `UIFont`, and `NSFont`.
+- [KippleFonts](/Sources/KippleFonts) — Convenience functionality for `Font`, `UIFont`, and `NSFont`.
 - [KippleUI](/Sources/KippleUI) — Convenience functionality for `SwiftUI`, `UIKit`, and `AppKit`.
 
 ### Dependencies
