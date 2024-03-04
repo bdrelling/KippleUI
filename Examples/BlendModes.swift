@@ -60,7 +60,7 @@ struct BlendMode_Previews: PreviewProvider {
 
     static var previews: some View {
         ScrollView {
-            LazyVGrid(columns: Self.columns, spacing: 40) {
+            LazyVGrid(columns: columns, spacing: 40) {
                 ForEach(BlendMode.allCases, id: \.self) { blendMode in
                     VStack {
                         Sphere(fill: .green)

@@ -56,9 +56,9 @@ public extension UXFont {
     static func printNamesAndVariations() {
         familyNamesAndVariations.forEach { print($0) }
     }
-    
+
     /// A wrapper around `familyName` that converts to a `String` on all platforms.
-    /// 
+    ///
     /// This is necessary because `NSFont.familyName` is optional, but `UIFont.familyName` is not.
     /// On macOS, if a family name is not found, a value of `"Unknown"` is returned.
     var safeFamilyName: String {

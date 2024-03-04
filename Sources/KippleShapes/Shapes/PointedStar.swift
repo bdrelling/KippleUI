@@ -82,6 +82,7 @@ public struct PointedStar: Shape {
 }
 
 // MARK: - Previews
+
 struct Star_Previews: PreviewProvider {
     static var previews: some View {
         PointedStar()

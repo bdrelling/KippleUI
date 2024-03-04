@@ -1,16 +1,18 @@
+// Copyright © 2024 Brian Drelling. All rights reserved.
+
+@testable import KippleShaders
 import Metal
 import MetalPerformanceShaders
-@testable import KippleShaders
 import XCTest
 
 /// Drop-in tests for ensuring Metal resources are found within the tested module.
 final class MetalPerformanceShadersTests: XCTestCase {
     // MARK: Properties
-    
+
     let bundle: Bundle = .kippleShaders
-    
+
     // MARK: Tests
-    
+
     /// Tests that the Bundle contains a `default.metallib` file, which is required to initialize the default library.
     func testMetalResourcesExist() {
         let path = self.bundle.path(forResource: "default", ofType: "metallib")

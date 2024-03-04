@@ -36,7 +36,7 @@ struct Hexagon_Previews: PreviewProvider {
             Hexagon(orientation: .horizontal)
                 .fill(.red)
                 .aspectRatio(contentMode: .fit)
-            
+
             Hexagon(orientation: .vertical)
                 .fill(.red)
                 .aspectRatio(contentMode: .fit)

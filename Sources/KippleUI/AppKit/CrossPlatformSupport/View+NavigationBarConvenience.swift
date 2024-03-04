@@ -24,8 +24,8 @@ public extension View {
 
 #if os(tvOS) || os(watchOS)
 
-extension View {
-    public func navigationBarTitle(_ titleKey: LocalizedStringKey, displayMode: NavigationBarItem.TitleDisplayMode) -> some View {
+public extension View {
+    func navigationBarTitle(_ titleKey: LocalizedStringKey, displayMode: NavigationBarItem.TitleDisplayMode) -> some View {
         self.navigationTitle(titleKey)
     }
 }

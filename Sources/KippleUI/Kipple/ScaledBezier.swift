@@ -1,11 +1,13 @@
+// Copyright © 2024 Brian Drelling. All rights reserved.
+
 //// Copyright © 2024 Brian Drelling. All rights reserved.
 //
-//import SwiftUI
+// import SwiftUI
 //
 ///// Draws a `UIBezierPath` within a SwiftUI `Shape` context.
 /////
 ///// Source (with modifications): https://www.hackingwithswift.com/quick-start/swiftui/how-to-use-uibezierpath-and-cgpath-in-swiftui
-//public struct ScaledBezier: Shape {
+// public struct ScaledBezier: Shape {
 //    private let bezierPath: UIBezierPath
 //
 //    public init(_ bezierPath: UIBezierPath) {
@@ -16,11 +18,11 @@
 //        let path = Path(bezierPath.cgPath)
 //        return path.scaled(to: rect)
 //    }
-//}
+// }
 //
 //// MARK: - Extensions
 //
-//public extension Path {
+// public extension Path {
 //    func scaled(to rect: CGRect) -> Path {
 //        // Determine the scale of the current path
 //        let width = rect.width / boundingRect.width
@@ -35,20 +37,20 @@
 //        // Apply that scale and send back the result.
 //        return applying(transform)
 //    }
-//}
+// }
 //
 //// MARK: - Previews
 //
-//struct ScaledBezier_Previews: PreviewProvider {
+// struct ScaledBezier_Previews: PreviewProvider {
 //    static var previews: some View {
 //        ScaledBezier(.cardiogram)
 //            .stroke(Color.white)
 //            .background(Color.blue)
 //            .frame(maxWidth: .infinity, maxHeight: .infinity)
 //    }
-//}
+// }
 //
-//private extension UIBezierPath {
+// private extension UIBezierPath {
 //    static var cardiogram: UIBezierPath {
 //        let path = UIBezierPath()
 //        path.move(to: .init(x: 0, y: 0.5))
@@ -62,4 +64,4 @@
 //        path.addLine(to: .init(x: 1, y: 0.5))
 //        return path
 //    }
-//}
+// }

@@ -55,8 +55,8 @@ struct PreviewBackground_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { _ in
             ZStack {
-                HStack(spacing: Self.spacing) {
-                    VStack(spacing: Self.spacing) {
+                HStack(spacing: spacing) {
+                    VStack(spacing: spacing) {
                         Text("Text")
                             .previewBackground()
                         Text("Text")
@@ -67,7 +67,7 @@ struct PreviewBackground_Previews: PreviewProvider {
                     .padding()
                     .previewBackground()
 
-                    VStack(spacing: Self.spacing) {
+                    VStack(spacing: spacing) {
                         Text("Text")
                             .previewBackground()
                         Text("Text")

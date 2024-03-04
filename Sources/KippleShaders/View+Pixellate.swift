@@ -1,6 +1,8 @@
+// Copyright © 2024 Brian Drelling. All rights reserved.
+
 import SwiftUI
 
-//private struct PixellationModifier: ViewModifier {
+// private struct PixellationModifier: ViewModifier {
 //    func body(content: Content) -> some View {
 //        content
 //            .foregroundStyle(.blue)
@@ -11,7 +13,7 @@ import SwiftUI
 //                maxSampleOffset: .zero
 //            )
 //    }
-//}
+// }
 
 // MARK: - Extensions
 
@@ -22,7 +24,7 @@ public extension View {
             name: "pixellate"
         )
         let shader = Shader(function: function, arguments: [
-            .float(10)
+            .float(10),
         ])
         return self
             .layerEffect(shader, maxSampleOffset: .zero, isEnabled: true)

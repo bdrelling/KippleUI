@@ -8,7 +8,7 @@ private struct CopyingModifier: ViewModifier {
     @State private var isShowingPopover = false
 
     private let text: String
-    
+
     #if os(iOS)
     private let backgroundColor: Color = .init(uiColor: .secondarySystemBackground)
     #elseif os(macOS)

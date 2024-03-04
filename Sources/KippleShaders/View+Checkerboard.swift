@@ -1,3 +1,5 @@
+// Copyright © 2024 Brian Drelling. All rights reserved.
+
 import SwiftUI
 
 private struct CheckerboardModifier: ViewModifier {

@@ -55,7 +55,7 @@ struct Quadrilateral_Previews: PreviewProvider {
             Quadrilateral()
                 .fill(.red)
                 .aspectRatio(contentMode: .fit)
-            
+
             Quadrilateral(points: [.topLeading, .top, .bottomTrailing, .bottomLeading])
                 .fill(.red)
                 .aspectRatio(contentMode: .fit)
