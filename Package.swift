@@ -28,7 +28,6 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/bdrelling/Kipple", .upToNextMinor(from: "0.14.0")),
         .package(url: "https://github.com/bdrelling/KippleTools", .upToNextMinor(from: "0.5.0")),
-        .package(url: "https://github.com/twostraws/Inferno", revision: "ca1ec01"),
     ],
     targets: [
         // Product Targets (without Dependencies)
@@ -43,9 +42,6 @@ let package = Package(
         ),
         .target(
             name: .kippleShaders,
-            dependencies: [
-                .product(name: "Inferno", package: "Inferno"),
-            ],
             resources: [
                 .process("Shaders"),
             ]
