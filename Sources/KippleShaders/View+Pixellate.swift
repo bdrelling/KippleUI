@@ -18,13 +18,13 @@ import SwiftUI
 // MARK: - Extensions
 
 public extension View {
-    func pixellate() -> some View {
+    func pixellate(strength: Double = 4) -> some View {
         let function = ShaderFunction(
             library: .bundle(.kippleShaders),
             name: "pixellate"
         )
         let shader = Shader(function: function, arguments: [
-            .float(10),
+            .float(strength),
         ])
         return self
             .layerEffect(shader, maxSampleOffset: .zero, isEnabled: true)
