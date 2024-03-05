@@ -13,19 +13,23 @@ public final class FontManager {
     /// An array of bundle identifiers whose fonts have been registered by this class.
     private var registeredBundleIdentifiers: [String] = []
 
+    /// An array of all available font family names.
     public var availableFontFamilies: [String] {
         Font.familyNames
     }
 
+    /// An array of all available font family names along with their variations.
     public var availableFontFamiliesAndVariations: [String] {
         Font.familyNamesAndVariations
     }
 
-    static var availableFonts: [Font] {
+    /// An array of all available fonts.
+    public var availableFonts: [Font] {
         Font.allFonts
     }
 
-    static var availableFontsAndVariations: [Font] {
+    /// An array of all available fonts along with their variations.
+    public var availableFontsAndVariations: [Font] {
         Font.allFontsAndVariations
     }
 
@@ -35,10 +39,12 @@ public final class FontManager {
 
     // MARK: Methods
 
+    /// Prints all available font family names to the console.
     public func printNames() {
         Font.printNames()
     }
 
+    /// Prints all available font family names along with their variations to the console.
     public func printNamesAndVariations() {
         Font.printNamesAndVariations()
     }
@@ -69,6 +75,10 @@ public final class FontManager {
         // If no fonts were found in the bundle with any file extension, throw an error that no founds were found.
         if !bundleHasFonts {
             throw RegistrationError.fontsNotFound(bundleID: bundle.bundleIdentifier)
+        }
+
+        if let bundleIdentifier = bundle.bundleIdentifier {
+            self.registeredBundleIdentifiers.append(bundleIdentifier)
         }
     }
 
@@ -105,7 +115,7 @@ public final class FontManager {
         }
     }
 
-    private func hasRegistered(_ bundleIdentifier: String?) throws -> Bool {
+    func hasRegistered(_ bundleIdentifier: String?) throws -> Bool {
         guard let bundleIdentifier else {
             throw RegistrationError.bundleIdentifierNotFound
         }

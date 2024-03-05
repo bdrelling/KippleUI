@@ -56,7 +56,12 @@ let package = Package(
         ),
         // Test Targets
         .kippleTestTarget(name: .kippleColors),
-        .kippleTestTarget(name: .kippleFonts),
+        .kippleTestTarget(
+            name: .kippleFonts, 
+            resources: [
+                .process("Resources"),
+            ]
+        ),
         .kippleTestTarget(name: .kippleShaders),
     ]
 )
@@ -64,12 +69,13 @@ let package = Package(
 // MARK: - Extensions
 
 extension Target {
-    static func kippleTestTarget(name: String) -> Target {
+    static func kippleTestTarget(name: String, resources: [Resource]? = nil) -> Target {
         .testTarget(
             name: "\(name)Tests",
             dependencies: [
                 .target(name: name),
-            ]
+            ],
+            resources: resources
         )
     }
 }

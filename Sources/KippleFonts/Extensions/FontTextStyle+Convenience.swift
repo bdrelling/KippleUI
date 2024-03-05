@@ -14,9 +14,11 @@ public extension Font.TextStyle {
 
 // MARK: - UIKit / AppKit Extensions
 
-#if canImport(UIKit)
+extension UXFont.TextStyle {
+    var preferredSize: CGFloat {
+        UXFont.preferredFont(forTextStyle: self).pointSize
+    }
 
-extension UIFont.TextStyle {
     init(textStyle: Font.TextStyle) {
         switch textStyle {
         case .largeTitle:
@@ -50,47 +52,4 @@ extension UIFont.TextStyle {
             self = .body
         }
     }
-
-    var preferredSize: CGFloat {
-        UIFont.preferredFont(forTextStyle: self).pointSize
-    }
 }
-
-#elseif canImport(AppKit)
-
-extension NSFont.TextStyle {
-    init(textStyle: Font.TextStyle) {
-        switch textStyle {
-        case .largeTitle:
-            self = .largeTitle
-        case .title:
-            self = .title1
-        case .title2:
-            self = .title2
-        case .title3:
-            self = .title3
-        case .headline:
-            self = .headline
-        case .subheadline:
-            self = .subheadline
-        case .body:
-            self = .body
-        case .callout:
-            self = .callout
-        case .footnote:
-            self = .footnote
-        case .caption:
-            self = .caption1
-        case .caption2:
-            self = .caption2
-        @unknown default:
-            self = .body
-        }
-    }
-
-    var preferredSize: CGFloat {
-        NSFont.preferredFont(forTextStyle: self).pointSize
-    }
-}
-
-#endif
