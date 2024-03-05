@@ -6,5 +6,6 @@
 
 @_exported import KippleColors
 @_exported import KippleFonts
+@_exported import KippleHaptics
 @_exported import KippleShaders
 @_exported import KippleShapes

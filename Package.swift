@@ -7,6 +7,7 @@ import PackageDescription
 let allModules: [String] = [
     .kippleColors,
     .kippleFonts,
+    .kippleHaptics,
     .kippleShaders,
     .kippleShapes,
 ]
@@ -33,6 +34,7 @@ let package = Package(
         // Product Targets (without Dependencies)
         .target(name: .kippleColors),
         .target(name: .kippleFonts),
+        .target(name: .kippleHaptics),
         // Product Targets (with Dependencies)
         .target(
             name: .kippleUI,
@@ -53,6 +55,7 @@ let package = Package(
             ]
         ),
         // Test Targets
+        .kippleTestTarget(name: .kippleColors),
         .kippleTestTarget(name: .kippleFonts),
         .kippleTestTarget(name: .kippleShaders),
     ]
@@ -79,6 +82,7 @@ extension String {
     
     static let kippleColors = "KippleColors"
     static let kippleFonts = "KippleFonts"
+    static let kippleHaptics = "KippleHaptics"
     static let kippleShaders = "KippleShaders"
     static let kippleShapes = "KippleShapes"
 }

@@ -74,8 +74,6 @@ public extension UXFont {
 
 #if canImport(UIKit)
 
-public typealias UXFont = UIFont
-
 public extension UIFont {
     convenience init?(name: String, relativeTo textStyle: TextStyle) {
         self.init(name: name, size: textStyle.preferredSize)
@@ -89,8 +87,6 @@ public extension UIFont {
 }
 
 #elseif canImport(AppKit)
-
-public typealias UXFont = NSFont
 
 public extension NSFont {
     convenience init?(name: String, relativeTo textStyle: TextStyle) {
