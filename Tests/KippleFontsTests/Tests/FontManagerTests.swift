@@ -10,6 +10,9 @@ final class FontManagerTests: XCTestCase {
         XCTAssertFalse(FontManager.shared.availableFontFamiliesAndVariations.isEmpty)
         XCTAssertFalse(FontManager.shared.availableFonts.isEmpty)
         XCTAssertFalse(FontManager.shared.availableFontsAndVariations.isEmpty)
+
+        XCTAssertEqual(FontManager.shared.availableFontFamilies.count, FontManager.shared.availableFonts.count)
+        XCTAssertEqual(FontManager.shared.availableFontFamiliesAndVariations.count, FontManager.shared.availableFontsAndVariations.count)
     }
 
     func testFontRegistration() throws {

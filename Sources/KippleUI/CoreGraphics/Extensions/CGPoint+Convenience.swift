@@ -16,8 +16,16 @@ public extension CGPoint {
         sqrt(pow(point.x - x, 2) + pow(point.y - y, 2))
     }
 
+    static func * (lhs: Self, rhs: Self) -> Self {
+        .init(x: lhs.x * rhs.x, y: lhs.y * rhs.y)
+    }
+
     static func * (lhs: Self, rhs: CGFloat) -> Self {
         .init(x: lhs.x * rhs, y: lhs.y * rhs)
+    }
+
+    static func / (lhs: Self, rhs: Self) -> Self {
+        .init(x: lhs.x / rhs.x, y: lhs.y / rhs.y)
     }
 
     static func / (lhs: Self, rhs: CGFloat) -> Self {

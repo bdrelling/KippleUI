@@ -19,10 +19,10 @@ final class FontExtensionTests: XCTestCase {
         XCTAssertFalse(UXFont.allFontsAndVariations.isEmpty)
     }
 
-    func testPreferredUXFontMethod() {
-        let preferredFont = Font.preferredUXFont(forTextStyle: .body)
+//    func testPreferredUXFontMethod() {
+//        let preferredFont = Font.preferredUXFont(forTextStyle: .body)
 //        XCTAssertEqual(preferredFont, .init())
-    }
+//    }
 
 //        func testPrintNamesMethod() {
 //            // Capture the output printed to the console

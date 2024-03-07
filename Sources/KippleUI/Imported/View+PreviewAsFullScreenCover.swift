@@ -19,7 +19,7 @@ private struct FullScreenCoverPreviewer<Content>: View where Content: View {
                 self.content()
                     .dynamicTypeSize(self.dynamicTypeSize)
             }
-            .onChange(of: self.isPresented) { newValue in
+            .onChange(of: self.isPresented) { _, newValue in
                 if newValue == false {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self.isPresented = true

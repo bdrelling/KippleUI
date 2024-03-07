@@ -24,13 +24,13 @@ public struct FontTester<Content>: View where Content: View {
                                 .foregroundColor(.secondary)
 
                             self.content()
-                                .font(.custom(familyName, relativeTo: self.textStyle))
+                                .font(.custom(familyName, relativeTo: self.textStyle.uxTextStyle))
                                 .frame(maxWidth: .infinity)
                                 .padding(8)
                                 .foregroundStyle(colors.foreground)
                                 .background(colors.background)
                         }
-                        .id("\(font.hashValue)-\(index)")
+                        .id("\(familyName)-\(index)")
                     }
                 }
             }

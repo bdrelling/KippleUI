@@ -16,14 +16,12 @@ public extension Font {
 
     /// An array of all available fonts.
     static var allFonts: [Font] {
-        familyNames
-            .compactMap { Font.custom($0, relativeTo: .body) }
+        UXFont.allFonts.map(Font.init)
     }
 
     /// An array of all available fonts along with their variations.
     static var allFontsAndVariations: [Font] {
-        familyNamesAndVariations
-            .compactMap { Font.custom($0, relativeTo: .body) }
+        UXFont.allFontsAndVariations.map(Font.init)
     }
 
     /// Retrieves the preferred system font for the specified text style.
@@ -52,14 +50,14 @@ public extension UXFont {
     static var allFonts: [UXFont] {
         familyNames
             .sorted()
-            .compactMap { .init(name: $0, relativeTo: .body) }
+            .compactMap { UXFont(name: $0, relativeTo: .body) }
     }
 
     /// An array of all available font family names along with their variations.
     static var allFontsAndVariations: [UXFont] {
         familyNamesAndVariations
             .sorted()
-            .compactMap { .init(name: $0, relativeTo: .body) }
+            .compactMap { UXFont(name: $0, relativeTo: .body) }
     }
 
     /// A wrapper around `familyName` that converts to a `String` on all platforms.
