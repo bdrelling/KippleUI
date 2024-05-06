@@ -68,19 +68,18 @@ public struct BackButtonPreviewer<Content>: View where Content: View {
 
 @available(watchOS, unavailable)
 public extension View {
-    func withBackButton<Content: View>(@ViewBuilder content: @escaping () -> Content) -> some View {
+    func navigationBarBackButton<Content: View>(visibility: Visibility = .automatic, @ViewBuilder content: @escaping () -> Content) -> some View {
         navigationBarBackButtonHidden(true)
             .toolbar {
-                #if os(macOS)
-                ToolbarItem(placement: .principal) {
-                    BackButton(content: content)
+                ToolbarItem(placement: .crossPlatformTopBarLeading) {
+                    BackButton(visibility: visibility, content: content)
                 }
-                #else
-                ToolbarItem(placement: .navigationBarLeading) {
-                    BackButton(content: content)
-                }
-                #endif
             }
+    }
+
+    func navigationBarBackButton<Content: View>(isVisible: Bool, @ViewBuilder content: @escaping () -> Content) -> some View {
+        let visibility: Visibility = isVisible ? .visible : .hidden
+        return self.navigationBarBackButton(visibility: visibility, content: content)
     }
 }
 
@@ -92,12 +91,11 @@ struct BackButton_Previews: PreviewProvider {
         BackButtonPreviewer {
             Color.blue
                 .edgesIgnoringSafeArea(.all)
-                .withBackButton {
+                .navigationBarBackButton {
                     Text("go bak")
                         .padding()
                         .background(Color.purple)
                 }
         }
-        .preferredColorScheme(.dark)
     }
 }

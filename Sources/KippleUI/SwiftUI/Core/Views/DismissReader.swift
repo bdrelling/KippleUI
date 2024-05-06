@@ -22,21 +22,13 @@ public struct DismissReader<Content>: View where Content: View {
 public extension View {
     /// Adds a dismiss button to the toolbar.
     func withNavigationBarDoneButton(if _: Bool = true) -> some View {
-        DismissReader { dismiss in
+        EnvironmentReader(\.dismiss) { dismiss in
             self.toolbar {
-                #if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .crossPlatformTopBarTrailing) {
                     Button(action: { dismiss() }) {
                         Text("Done")
                     }
                 }
-                #elseif os(macOS)
-                ToolbarItem(placement: .navigation) {
-                    Button(action: { dismiss() }) {
-                        Text("Done")
-                    }
-                }
-                #endif
             }
         }
     }
