@@ -27,8 +27,8 @@ let package = Package(
     ],
     products: [.library(name: .kippleUI, targets: [.kippleUI])] + allModulesAsProducts,
     dependencies: [
-        .package(url: "https://github.com/bdrelling/Kipple", .upToNextMinor(from: "0.14.0")),
-        .package(url: "https://github.com/bdrelling/KippleTools", .upToNextMinor(from: "0.5.0")),
+        .package(url: "https://github.com/bdrelling/Kipple", .upToNextMinor(from: "0.14.2")),
+        .package(url: "https://github.com/bdrelling/KippleTools", .upToNextMinor(from: "0.5.3")),
     ],
     targets: [
         // Product Targets (without Dependencies)
