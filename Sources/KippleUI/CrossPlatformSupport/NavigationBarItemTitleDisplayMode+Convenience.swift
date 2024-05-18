@@ -1,8 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Brian Drelling on 5/18/24.
-//
+// Copyright © 2024 Brian Drelling. All rights reserved.
 
 import Foundation

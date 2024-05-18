@@ -8,13 +8,13 @@ public enum PlatformSafeTitleDisplayMode {
 
     @available(tvOS, unavailable)
     case large
-    
+
     #if !os(macOS)
     var rawValue: NavigationBarItem.TitleDisplayMode {
         switch self {
         case .automatic: .automatic
         case .inline: .inline
-        
+
         #if !os(tvOS)
         case .large: .large
         #endif
