@@ -20,8 +20,7 @@ private struct AlertHandlerModifier: ViewModifier {
                 },
                 message: { error in
                     if self.isDebugging {
-                        Text("\(error.message) [\(error.source)]")
-                        Text("FFF")
+                        Text("\(error.message)\n\n\(error.source)")
                     } else {
                         Text(error.message)
                     }

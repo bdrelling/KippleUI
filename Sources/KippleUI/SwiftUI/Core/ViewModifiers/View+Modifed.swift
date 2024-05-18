@@ -4,7 +4,7 @@ import SwiftUI
 
 public extension View {
     @ViewBuilder
-    func modify<Content>(_ content: @escaping (Self) -> Content) -> some View where Content: View {
+    func modified<Content>(@ViewBuilder _ content: @escaping (Self) -> Content) -> some View where Content: View {
         content(self)
     }
 }
@@ -14,7 +14,7 @@ public extension View {
 struct View_Modify_Previews: PreviewProvider {
     static var previews: some View {
         Color.blue
-            .modify { view in
+            .modified { view in
                 #if os(iOS)
                 view.overlay {
                     Text("iOS")

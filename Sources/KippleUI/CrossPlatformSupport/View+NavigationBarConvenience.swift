@@ -2,25 +2,36 @@
 
 import SwiftUI
 
-#if os(macOS) || os(tvOS) || os(watchOS)
 public enum PlatformSafeTitleDisplayMode {
     case automatic
     case inline
 
     @available(tvOS, unavailable)
     case large
+    
+    #if !os(macOS)
+    var rawValue: NavigationBarItem.TitleDisplayMode {
+        switch self {
+        case .automatic: .automatic
+        case .inline: .inline
+        
+        #if !os(tvOS)
+        case .large: .large
+        #endif
+        }
+    }
+    #endif
 }
-#endif
-
-#if os(macOS)
 
 public extension View {
-    func navigationBarTitleDisplayMode(_: PlatformSafeTitleDisplayMode) -> some View {
+    func crossPlatformNavigationBarTitleDisplayMode(_ mode: PlatformSafeTitleDisplayMode) -> some View {
+        #if os(macOS)
         self
+        #else
+        self.navigationBarTitleDisplayMode(mode.rawValue)
+        #endif
     }
 }
-
-#endif
 
 #if os(tvOS) || os(watchOS)
 
