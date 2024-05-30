@@ -58,7 +58,6 @@ public extension RegisteredFontName {
     static let palatino: Self = "Palatino"
     static let rockwell: Self = "Rockwell"
     static let trebuchetMS: Self = "Trebuchet MS"
-    static let ubuntu: Self = "Ubuntu"
     static let verdana: Self = "Verdana"
 }
 
@@ -125,14 +124,6 @@ public extension Font {
 
     static func trebuchetMS(size: CGFloat, relativeTo style: TextStyle = .body) -> Self {
         self.custom(.trebuchetMS, size: size, relativeTo: style)
-    }
-
-    static func ubuntu(_ style: TextStyle = .body) -> Self {
-        self.custom(.ubuntu, relativeTo: style)
-    }
-
-    static func ubuntu(size: CGFloat, relativeTo style: TextStyle = .body) -> Self {
-        self.custom(.ubuntu, size: size, relativeTo: style)
     }
 
     static func verdana(_ style: TextStyle = .body) -> Self {
