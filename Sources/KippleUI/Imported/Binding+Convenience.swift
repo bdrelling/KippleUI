@@ -24,7 +24,7 @@ public extension Binding where Value == String {
     /// Source: https://www.hackingwithswift.com/forums/swiftui/limit-characters-in-a-textfield/15017/15018
     func max(_ limit: Int) -> Self {
         if wrappedValue.count > limit {
-            DispatchQueue.main.async {
+            Task {
                 self.wrappedValue = String(self.wrappedValue.prefix(limit))
             }
         }

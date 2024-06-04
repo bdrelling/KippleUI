@@ -4,18 +4,18 @@ import SwiftUI
 
 public extension ToolbarItemPlacement {
     static let crossPlatformTopBarLeading: Self = {
-        #if os(iOS)
-        .topBarLeading
-        #elseif os(macOS)
+        #if os(macOS)
         .navigation
+        #else
+        .topBarLeading
         #endif
     }()
 
     static let crossPlatformTopBarTrailing: Self = {
-        #if os(iOS)
-        .topBarTrailing
-        #elseif os(macOS)
+        #if os(macOS)
         .primaryAction
+        #else
+        .topBarTrailing
         #endif
     }()
 }
@@ -27,9 +27,14 @@ public extension ToolbarItemPlacement {
         Color.gray
             .ignoresSafeArea()
             .toolbar {
+                #if !os(watchOS)
                 ToolbarItem(placement: .navigation) {
                     Text("Navigation")
                 }
+                ToolbarItem(placement: .principal) {
+                    Text("Principal")
+                }
+                #endif
                 ToolbarItem(placement: .destructiveAction) {
                     Text("Destruct")
                 }
@@ -39,18 +44,17 @@ public extension ToolbarItemPlacement {
                 ToolbarItem(placement: .confirmationAction) {
                     Text("Confirm")
                 }
-                ToolbarItem(placement: .secondaryAction) {
-                    Text("Secondary")
-                }
                 ToolbarItem(placement: .primaryAction) {
                     Text("Primary")
+                }
+                #if !os(tvOS) && !os(watchOS)
+                ToolbarItem(placement: .secondaryAction) {
+                    Text("Secondary")
                 }
                 ToolbarItem(placement: .status) {
                     Text("Status")
                 }
-                ToolbarItem(placement: .principal) {
-                    Text("Principal")
-                }
+                #endif
                 ToolbarItem(placement: .automatic) {
                     Text("Automatic")
                 }

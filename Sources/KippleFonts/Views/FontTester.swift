@@ -70,7 +70,7 @@ public struct FontTester<Content>: View where Content: View {
     }
 }
 
-public struct ColorPair: Equatable, Hashable {
+public struct ColorPair: Sendable, Equatable, Hashable {
     public let foreground: Color
     public let background: Color
 

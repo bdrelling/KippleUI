@@ -39,7 +39,12 @@ private struct AlertHandlerModifier: ViewModifier {
 @Observable
 public final class AlertHandler {
     public private(set) var error: AlertHandlerError?
-    public var isErrorPresented: Bool = false
+    public var isErrorPresented: Bool
+
+    public init(error: AlertHandlerError? = nil, isErrorPresented: Bool = false) {
+        self.error = error
+        self.isErrorPresented = isErrorPresented
+    }
 
     public func `catch`(_ error: Error, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
         self.error = .init(
@@ -60,7 +65,7 @@ public final class AlertHandler {
         }
     }
 
-    public func `catch`(_ body: @escaping () async throws -> Void, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
+    public func `catch`(_ body: @Sendable @escaping () async throws -> Void, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
         Task { @MainActor [weak self] in
             guard let self else { return }
 
@@ -107,6 +112,7 @@ public struct AlertHandlerError: Sendable, Equatable, Hashable {
 // MARK: - Extensions
 
 public extension View {
+    @ViewBuilder
     func handleAlerts(with alertHandler: AlertHandler? = nil, isDebugging: Bool = .isDebugging) -> some View {
         self.modifier(AlertHandlerModifier(alertHandler: alertHandler ?? .init(), isDebugging: isDebugging))
     }

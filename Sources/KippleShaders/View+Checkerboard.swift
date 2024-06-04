@@ -1,5 +1,7 @@
 // Copyright © 2024 Brian Drelling. All rights reserved.
 
+#if canImport(Metal)
+
 import SwiftUI
 
 private struct CheckerboardModifier: ViewModifier {
@@ -31,3 +33,5 @@ public extension View {
         .checkerboard()
         .padding(64)
 }
+
+#endif

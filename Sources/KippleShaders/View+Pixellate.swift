@@ -1,5 +1,7 @@
 // Copyright © 2024 Brian Drelling. All rights reserved.
 
+#if canImport(Metal)
+
 import SwiftUI
 
 // private struct PixellationModifier: ViewModifier {
@@ -61,3 +63,5 @@ extension View {
         .padding(64)
         .background(.yellow)
 }
+
+#endif

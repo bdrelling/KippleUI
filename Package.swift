@@ -27,28 +27,28 @@ let package = Package(
     ],
     products: [.library(name: .kippleUI, targets: [.kippleUI])] + allModulesAsProducts,
     dependencies: [
-        .package(url: "https://github.com/bdrelling/Kipple", .upToNextMinor(from: "0.14.2")),
+        .package(url: "https://github.com/bdrelling/Kipple", revision: "7b64f96fa67d68b35722029f2ef02a417a911b62"), // .upToNextMinor(from: "0.14.2")),
         .package(url: "https://github.com/bdrelling/KippleTools", .upToNextMinor(from: "0.5.3")),
     ],
     targets: [
         // Product Targets (without Dependencies)
-        .target(name: .kippleColors),
-        .target(name: .kippleFonts),
-        .target(name: .kippleHaptics),
+        .kippleTarget(name: .kippleColors),
+        .kippleTarget(name: .kippleFonts),
+        .kippleTarget(name: .kippleHaptics),
         // Product Targets (with Dependencies)
-        .target(
+        .kippleTarget(
             name: .kippleUI,
             dependencies: [
                 .product(name: "KippleFoundation", package: "Kipple"),
             ] + allModulesAsDependencies
         ),
-        .target(
+        .kippleTarget(
             name: .kippleShaders,
             resources: [
                 .process("Shaders"),
             ]
         ),
-        .target(
+        .kippleTarget(
             name: .kippleShapes,
             dependencies: [
                 .target(name: .kippleColors),
@@ -69,6 +69,20 @@ let package = Package(
 // MARK: - Extensions
 
 extension Target {
+    static func kippleTarget(name: String, dependencies: [Target.Dependency] = [], resources: [Resource]? = nil) -> Target {
+        .target(
+            name: name,
+            dependencies: dependencies,
+            resources: resources,
+            cSettings: [
+                .define("PLATFORM_WATCH_OS", .when(platforms: [.watchOS])),
+            ],
+            swiftSettings: [
+                .define("PLATFORM_WATCH_OS", .when(platforms: [.watchOS])),
+            ]
+        )
+    }
+    
     static func kippleTestTarget(name: String, resources: [Resource]? = nil) -> Target {
         .testTarget(
             name: "\(name)Tests",

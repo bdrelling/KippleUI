@@ -22,7 +22,7 @@ public extension Font {
 
 // MARK: - Supporting Types
 
-public struct RegisteredFontName {
+public struct RegisteredFontName: Sendable, Equatable, Hashable {
     fileprivate let value: String
 }
 
@@ -50,13 +50,26 @@ public extension UXFont {
 
 /// A collection of favorite fonts that exist on Apple platforms.
 public extension RegisteredFontName {
+    static let arial: Self = "Arial"
+    static let avenir: Self = "Avenir"
+    static let avenirNext: Self = "Avenir Next"
+    static let chalkboardSE: Self = "Chalkboard SE"
     static let copperplate: Self = "Copperplate"
     static let courierNew: Self = "Courier New"
+    static let dinCondensed: Self = "DIN Condensed"
     static let futura: Self = "Futura"
+    static let georgia: Self = "Georgia"
+    static let helvetica: Self = "Helvetica"
+    static let helveticaNeue: Self = "Helvetica Neue"
+    static let hiraginoSans: Self = "Hiragino Sans"
+    static let impact: Self = "Impact"
     static let kefa: Self = "Kefa"
     static let menlo: Self = "Menlo"
+    static let noteworthy: Self = "Noteworthy"
+    static let optima: Self = "Optima"
     static let palatino: Self = "Palatino"
     static let rockwell: Self = "Rockwell"
+    static let timesNewRoman: Self = "Times New Roman"
     static let trebuchetMS: Self = "Trebuchet MS"
     static let verdana: Self = "Verdana"
 }

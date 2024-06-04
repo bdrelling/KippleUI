@@ -1,5 +1,7 @@
 // Copyright © 2024 Brian Drelling. All rights reserved.
 
+#if canImport(Metal)
+
 import Metal
 import MetalPerformanceShaders
 
@@ -37,3 +39,5 @@ final class KippleShaderLibrary {
 //        let _ = try device.makeDefaultLibrary(bundle: Bundle.kippleShaders)
 //    }
 }
+
+#endif

@@ -4,7 +4,7 @@ import SwiftUI
 
 public extension View {
     @ViewBuilder
-    func refreshable(isRefreshable: Bool, action: @escaping () async -> Void) -> some View {
+    func refreshable(isRefreshable: Bool, action: @Sendable @escaping () async -> Void) -> some View {
         if isRefreshable {
             self.refreshable {
                 await action()

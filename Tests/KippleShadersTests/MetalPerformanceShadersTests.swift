@@ -1,5 +1,7 @@
 // Copyright © 2024 Brian Drelling. All rights reserved.
 
+#if canImport(Metal)
+
 @testable import KippleShaders
 import Metal
 import MetalPerformanceShaders
@@ -27,3 +29,5 @@ final class MetalPerformanceShadersTests: XCTestCase {
         let _ = try device.makeDefaultLibrary(bundle: self.bundle)
     }
 }
+
+#endif

@@ -25,7 +25,7 @@ public enum PlatformSafeTitleDisplayMode {
 
 public extension View {
     func crossPlatformNavigationBarTitleDisplayMode(_ mode: PlatformSafeTitleDisplayMode) -> some View {
-        #if os(macOS)
+        #if os(macOS) || os(tvOS)
         self
         #else
         self.navigationBarTitleDisplayMode(mode.rawValue)

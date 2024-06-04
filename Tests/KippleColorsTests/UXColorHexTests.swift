@@ -7,7 +7,12 @@ import XCTest
 final class UXColorHexTests: XCTestCase {
     func testHexProperty() {
         // Given
+        #if os(watchOS)
+        let color: UXColor = .red // Red color
+        #else
         let color: UXColor = .systemRed // Red color
+        #endif
+
         let expectedHexString = "FF453A" // Hexadecimal representation of red color
 
         // When
