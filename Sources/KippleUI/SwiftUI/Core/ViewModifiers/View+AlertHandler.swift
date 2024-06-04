@@ -65,7 +65,7 @@ public final class AlertHandler {
         }
     }
 
-    public func `catch`(_ body: @Sendable @escaping () async throws -> Void, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
+    public func `catch`(_ body: @MainActor @Sendable @escaping () async throws -> Void, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
         Task { @MainActor [weak self] in
             guard let self else { return }
 
@@ -74,7 +74,7 @@ public final class AlertHandler {
     }
 
     @MainActor
-    public func `catch`(_ body: @escaping () async throws -> Void, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) async {
+    public func `catch`(_ body: @MainActor @escaping () async throws -> Void, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) async {
         do {
             try await body()
         } catch {
